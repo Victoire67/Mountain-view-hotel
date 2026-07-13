@@ -1,0 +1,5 @@
+﻿Add site structure: pages, components, Tailwind updates and routing
+
+Add Header, Footer, Home, Menu, Restaurant, Bar, Contact pages, wire up react-router and framer-motion for animations. Update index.css for Tailwind directives and add dependencies to package.json.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
