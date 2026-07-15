@@ -1,17 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Layout from "./Layout/Layout";
-import Header from "./components/Header";
+import MainContentPage from "./pages/MainContentPage";
+
 const router = createBrowserRouter([
   {
 
 
     element: <Layout />,
-    children : [
-      {path : "/" , element : <LandingPage />}
+    children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+
+      {
+        path: "food",
+        element: <MainContentPage />
+      }
+
     ]
-  }
-])
+  }])
 
 export default function App() {
 

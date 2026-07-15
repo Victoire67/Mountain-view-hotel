@@ -1,0 +1,680 @@
+[{
+  "prep_time": "20 minutes",
+  "items": [
+    {
+      "name": "Mountain View Salad",
+      "name_fr": "Salade de Mountain View Hotel",
+      "price": 10000,
+      "currency": "RWF",
+      "description": "Onions, tomato, lettuce, avocado, cucumber, crouton, chicken and cheese with dressing sauce."
+    },
+    {
+      "name": "The Classic Chef Salad",
+      "name_fr": "Salade du Chef Classique",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Lettuce, tomato, cucumber, onions, carrot, avocado, bread croutons, boiled egg, chicken, ham and cheese with fresh dressing sauce."
+    },
+    {
+      "name": "Chicken Caprese",
+      "name_fr": "Caprese de Poulet",
+      "price": 10000,
+      "currency": "RWF",
+      "description": "Lettuce, avocado, tomato, chicken with balsamic vinaigrette."
+    },
+    {
+      "name": "Tuna Salad",
+      "name_fr": "Salade au Thon",
+      "price": 9000,
+      "currency": "RWF",
+      "description": "Composition of tuna chunks, lettuce, cucumber, tomato, onions."
+    },
+    {
+      "name": "Avocado Fan",
+      "name_fr": "Fan d'Avocat",
+      "price": 5000,
+      "currency": "RWF",
+      "description": "Avocado fan on a bed of fresh lettuce served with cocktail sauce."
+    },
+    {
+      "name": "Nicoise Salad",
+      "name_fr": "Salade Niçoise",
+      "price": 9000,
+      "currency": "RWF",
+      "description": "Green beans, boiled potato, tomato and tuna chunks."
+    },
+    {
+      "name": "Greek Salad",
+      "name_fr": "Salade Grecque",
+      "price": 8000,
+      "currency": "RWF",
+      "description": "Romaine hearts, tomato, cucumber, onions, lettuce, olives, cheese with Greek Vinaigrette."
+    },
+    {
+      "name": "Fresh Garden Salad",
+      "name_fr": "Salade Mixt de Saison",
+      "price": 6000,
+      "currency": "RWF",
+      "description": "A colorful mix of lettuce, tomato, avocado, cucumber, carrot, onions with vinaigrette dressing."
+    }
+  ],
+  "description" : "Cold Starter / Entrée Froides"
+},
+{
+  "description": "Indian Dishes / Plats Indiens",
+  "prep_time": "40 minutes",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Indian Chicken Curry",
+      "name_fr": "Poulet Indien au Curry",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Beef Curry",
+      "name_fr": "Boeuf Indien au Curry",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Fish Curry",
+      "name_fr": "Poisson Indien au Curry",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Chicken Biryani",
+      "name_fr": "Poulet Indien Biryani",
+      "price": 11000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Chicken Tikka Masala",
+      "name_fr": "Poulet Indien au Tikka Masala",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Chicken Vindaloo",
+      "name_fr": "Poulet Indien Vindaloo",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Moussaka",
+      "name_fr": "Moussaka Indienne",
+      "price": 8000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Coconut Fish Curry",
+      "name_fr": "Poisson Indien à la Noix de Coco",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Indian Spaghetti",
+      "name_fr": "Spaghetti Indien",
+      "price": 7000,
+      "currency": "RWF"
+    }
+  ]
+} ,
+{
+  "description": "Asian Dishes / Plats Asiatiques",
+  "prep_time": "40 minutes",
+  "note": "Some item names were partially obscured in the source photo (hand covering menu); names are best-effort reconstructions from visible text and price order.",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Asian Beef Stroganoff",
+      "name_fr": "Émincé de Boeuf Stroganoff",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Asian Chicken Stroganoff",
+      "name_fr": "Émincé de Poulet Stroganoff",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Asian Fish Stroganoff",
+      "name_fr": "Émincé de Poisson Stroganoff",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Chicken Manchurian",
+      "name_fr": "Poulet Manchurian",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Beef Sizzling",
+      "name_fr": "Sizzling de Boeuf",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Fish Sizzling",
+      "name_fr": "Sizzling de Poisson",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Pork Sizzling",
+      "name_fr": "Sizzling de Porc",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Vegetable Sizzling",
+      "name_fr": "Légumes Sizzling",
+      "price": 10000,
+      "currency": "RWF"
+    }
+  ]
+},{
+  "description": "Breakfast / Petit Déjeuner",
+  "prep_time": "25 minutes",
+  "items": [
+    {
+      "name": "English Breakfast",
+      "name_fr": "Petit Déjeuner Anglais",
+      "price": 8000,
+      "currency": "RWF",
+      "description": "Choice of tea, season of fresh fruits, eggs, baked bread and juice."
+    },
+    {
+      "name": "American Breakfast",
+      "name_fr": "Petit Déjeuner Américain",
+      "price": 10000,
+      "currency": "RWF",
+      "description": "Choice of tea, season of fresh fruits, eggs, baked bread, sausages, Spanish potato, white oats and juice."
+    },
+    {
+      "name": "Continental Breakfast",
+      "name_fr": "Petit Déjeuner Continental",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Choice of tea, season of fresh fruits, eggs, baked bread, sausages, Spanish potato, baked beans, white oats and juice."
+    },
+    {
+      "name": "Full Breakfast",
+      "name_fr": "Petit Déjeuner Complet",
+      "price": 15000,
+      "currency": "RWF",
+      "description": "Choice of tea or coffee, season of fresh fruits, eggs, baked bread, grilled tomato, sausages or bacon, ham, cheese, Spanish potato, spinach, white oats, cereals, soup and fresh juice."
+    }
+  ]
+},{
+  "description": "Chicken Dishes / Plats de Poulet",
+  "prep_time": "40 minutes",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Fried Chicken Breast",
+      "name_fr": "Poitrine de Poulet Sautée",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Deep fried coated breast chicken, green pepper, onion, dark sauce, salt, Maggi."
+    },
+    {
+      "name": "Fried Chicken Leg",
+      "name_fr": "Cuisse de Poulet",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Deep fried chicken leg, green capsicum, onion, garlic, salt, Maggi."
+    },
+    {
+      "name": "Chicken Stew",
+      "name_fr": "Fricassée de Poulet",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Boneless chicken thighs, capsicum, onion, garlic, salt, pepper."
+    },
+    {
+      "name": "Chicken Strips",
+      "name_fr": "Lanières de Poulet",
+      "price": 13000,
+      "currency": "RWF",
+      "description": "Deep fried chicken strips, marinated in panko bread crumbs, egg, garlic, black pepper, paprika, tartar sauce."
+    },
+    {
+      "name": "Chicken Nuggets",
+      "name_fr": "Croquettes de Poulet",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Deep fried coated chicken, marinated in panko bread crumbs, egg, garlic, black pepper, paprika, soya sauce."
+    },
+    {
+      "name": "Mountain View Boneless Chicken Steak",
+      "name_fr": "Steak de Poulet",
+      "price": 13000,
+      "currency": "RWF",
+      "description": "Boneless chicken breast marinated in oil, pepper, ginger paste, garlic, soya sauce."
+    }
+  ]
+},{
+  "description": "Fish Dishes / Plats de Poisson",
+  "prep_time": "40 minutes",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Captain Fried Fish Fillet",
+      "name_fr": "Filet de Capitaine",
+      "price": 13000,
+      "currency": "RWF",
+      "description": "Pan fried fish fillet, marinated English style."
+    },
+    {
+      "name": "Tilapia Fried Fish Fillet",
+      "name_fr": "Filet de Poisson",
+      "price": 12400,
+      "currency": "RWF",
+      "description": "Pan fried fish fillet, marinated."
+    },
+    {
+      "name": "Tilapia Bonne Femme",
+      "name_fr": "Filet de Poisson Sauce Champignons",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried fish fillet with mushroom sauce."
+    },
+    {
+      "name": "Whole Tilapia Fish Curry",
+      "name_fr": "Curry de Tilapia Entier",
+      "price": 25100,
+      "currency": "RWF",
+      "description": "Pan fried whole tilapia fish with coconut curry sauce."
+    },
+    {
+      "name": "Crispy Fried Fish Fillet",
+      "price": 13800,
+      "currency": "RWF",
+      "description": "Pan fried fish, white pepper, paprika, flour, garnished with lemon wedges."
+    },
+    {
+      "name": "Tilapia Fish Fillet with Lemon Butter Sauce",
+      "name_fr": "Filet de Poisson Panné à l'Anglaise",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried fish fillet with lemon, butter, pepper, salt, parsley."
+    },
+    {
+      "name": "Tilapia Fish Fillet with Garlic",
+      "price": 13000,
+      "currency": "RWF",
+      "description": "Pan fried fish fillet with garlic, butter, pepper, salt."
+    },
+    {
+      "name": "Mountain Special",
+      "price": 20000,
+      "currency": "RWF",
+      "description": "Whole baked tilapia fish with lemon, butter, pepper, salt."
+    }
+  ]
+},{
+  "description": "Pork Dishes / Plats de Porc",
+  "prep_time": "40 minutes",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Special Fried Pork",
+      "name_fr": "Spécial Porc",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Fried Pork Chops",
+      "name_fr": "Côtes de Porc",
+      "price": 13000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Fried Pork Ribs",
+      "name_fr": "Ribs de Porc Sautés aux Oignons",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Roast Pork Steak",
+      "name_fr": "Rôti de Porc en Teck",
+      "price": 11500,
+      "currency": "RWF"
+    }
+  ]
+},{
+  "description": "Hot Starters / Entrée Chaude",
+  "prep_time": "25 minutes",
+  "items": [
+    {
+      "name": "Chicken Broth",
+      "name_fr": "Potage de Poulet",
+      "price": 4000,
+      "currency": "RWF",
+      "description": "Clear chicken soup garnished with vegetables."
+    },
+    {
+      "name": "Cream of Mushroom Soup",
+      "name_fr": "Crème de Champignon",
+      "price": 7000,
+      "currency": "RWF",
+      "description": "Fresh mushroom, milk, butter, cream, parsley, salt and pepper."
+    },
+    {
+      "name": "Vegetable Soup",
+      "name_fr": "Potage de Légume",
+      "price": 5000,
+      "currency": "RWF",
+      "description": "Spinach, carrot, potato, salt and pepper."
+    },
+    {
+      "name": "Cream of Tomato / Tomato Soup",
+      "name_fr": "Soupe de Tomate",
+      "price": 5000,
+      "currency": "RWF",
+      "description": "Fresh tomato, butter, fresh cream."
+    },
+    {
+      "name": "Carrot and Ginger Soup",
+      "price": 9000,
+      "currency": "RWF",
+      "description": "Fresh carrot, ginger, butter, salt and pepper."
+    },
+    {
+      "name": "Beef Consommé",
+      "name_fr": "Boeuf Minestrone",
+      "price": 9000,
+      "currency": "RWF",
+      "description": "Clear soup with beef and vegetable julienne."
+    },
+    {
+      "name": "Fish Broth",
+      "name_fr": "Soupe de Poisson",
+      "price": 5000,
+      "currency": "RWF",
+      "description": "Cube of fish, carrot, celery, Maggi, pepper."
+    },
+    {
+      "name": "Cream of Pumpkin Enhanced with Ginger",
+      "name_fr": "Soupe de Courge",
+      "price": 9000,
+      "currency": "RWF",
+      "description": "Fresh cream, fresh pumpkin, ginger, butter, salt and pepper."
+    },
+    {
+      "name": "Onion Soup",
+      "name_fr": "Soupe d'Oignon",
+      "price": 5000,
+      "currency": "RWF",
+      "description": "Red onions, butter, chopped herbs."
+    }
+  ]
+},{
+  "description": "Beef Dishes / Plats de Boeuf",
+  "prep_time": "40 minutes",
+  "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
+  "items": [
+    {
+      "name": "Beef Tenderloin Steak",
+      "name_fr": "Filet de Boeuf Steak",
+      "price": 19000,
+      "currency": "RWF",
+      "description": "Pan fried beef fillet crowned with black pepper corn sauce."
+    },
+    {
+      "name": "Beef Stew",
+      "name_fr": "Navarin de Boeuf",
+      "price": 11600,
+      "currency": "RWF",
+      "description": "Pan fried beef thighs, tomato, onion, garlic, paprika, salt."
+    },
+    {
+      "name": "T-Bone Steak",
+      "price": 13000,
+      "currency": "RWF",
+      "description": "Pan fried beef with pepper, salt, butter."
+    },
+    {
+      "name": "Green Pepper Steak",
+      "name_fr": "Steak au Poivre Vert",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried beef steak with poivre sauce, tomato, green pepper, cut in julienne style."
+    },
+    {
+      "name": "Beef Fillet Mignon",
+      "name_fr": "Filet de Boeuf Mignon",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried beef fillet mignon, black pepper, butter, chopped rosemary."
+    },
+    {
+      "name": "Beef Fajita",
+      "name_fr": "Boeuf Fajita",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried beef steak, garlic, celery, pepper, baby marrow, tomato cut in cube style."
+    },
+    {
+      "name": "Beef Chops",
+      "name_fr": "Côtes de Boeuf",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried beef, black pepper, butter, salt."
+    },
+    {
+      "name": "Braised Beef Carbonnade",
+      "name_fr": "Carbonnade de Boeuf Braisé",
+      "price": 12000,
+      "currency": "RWF",
+      "description": "Pan fried beef steak marinated, stuffed with cheese and ham, bed on provincial sauce."
+    }
+  ]
+},{
+  "description": "Pasta Dishes / Plats de Pâtes",
+  "prep_time": "30 minutes",
+  "items": [
+    {
+      "name": "Spaghetti Bolognaise",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Spaghetti Napolitano",
+      "price": 11000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Spaghetti Carbonara",
+      "price": 11000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Beef Lasagna",
+      "price": 11000,
+      "currency": "RWF"
+    }
+  ]
+},{
+  "description": "Barbecue",
+  "items": [
+    {
+      "name": "Goat Brochette",
+      "name_fr": "Brochette de Chèvre",
+      "price": 3500,
+      "currency": "RWF"
+    },
+    {
+      "name": "Zingalo Kebabs",
+      "name_fr": "Brochette de Zingalo",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Beef Brochette",
+      "name_fr": "Brochette de Boeuf",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Fish Brochette",
+      "name_fr": "Brochette de Poisson",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Chicken Brochette",
+      "name_fr": "Brochette de Poulet",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Beef Sausage Brochette",
+      "name_fr": "Brochette de Saucisson",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Tongue Brochette",
+      "name_fr": "Brochette de Langue",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Whole Grilled Chicken",
+      "name_fr": "Poulet Entier Grillé Garni",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Half Grilled Chicken",
+      "name_fr": "1/2 Poulet Grillé Garni",
+      "price": 22000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Whole Grilled Fish",
+      "name_fr": "Poisson Entier Grillé",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Medium Whole Grilled Fish",
+      "name_fr": "Poisson Entier",
+      "price": 12000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Whole Rabbit Grilled",
+      "name_fr": "Lapin Entier Grillé",
+      "price": 20000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Goat Ribs Grilled (Ikidali)",
+      "name_fr": "Ribs de Chèvre Grillés",
+      "price": 15000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Goat Leg Grilled (Nyamacoma)",
+      "price": 25000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Plate of French Fries",
+      "name_fr": "Assiette de Frites et Salade",
+      "price": 3000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Plate of Banana Chips & Salad",
+      "name_fr": "Assiette de Banane Frite et Salade",
+      "price": 3000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Grilled Potato",
+      "name_fr": "Pomme de Terre Grillée",
+      "price": 1000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Grilled Banana",
+      "name_fr": "Banane Grillée",
+      "price": 1000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Sweet Potato Grilled",
+      "name_fr": "Patate Douce Grillée",
+      "price": 1000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Grilled Yam",
+      "name_fr": "Igname Grillé",
+      "price": 2000,
+      "currency": "RWF"
+    }
+  ]
+},{
+  "description": "Snacks Dishes / Collations",
+  "prep_time": "30 minutes",
+  "items": [
+    {
+      "name": "Chicken Wings",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Fish Fingers",
+      "price": 9000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Beef Sambussa (3 pcs)",
+      "price": 4000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Chapatti",
+      "price": 2000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Vegetable Sambussa (pcs)",
+      "price": 3000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Plate of Cheese and Sausage",
+      "price": 5000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Paprika Wings",
+      "price": 9000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Meat Balls",
+      "price": 5000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Butter Wings",
+      "price": 10000,
+      "currency": "RWF"
+    },
+    {
+      "name": "Chili Wings",
+      "price": 10000,
+      "currency": "RWF"
+    }
+  ]
+}]

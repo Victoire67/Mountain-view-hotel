@@ -18,13 +18,13 @@ export default function Header() {
     <nav >
       <ul className="flex items-center gap-4 text-[#FFB82B]">
         <li>
-          <NavLink to={"food"}>Food</NavLink>
+          <NavLink to={"food"} className={({ isActive }) => (isActive ? "underline font-bold" : "")}>Food</NavLink>
         </li>
         <li>
-          <NavLink to={"drinks"}>Drinks</NavLink>
+          <NavLink to={"drinks"}className={({ isActive }) => (isActive ? "underline font-bold" : "")}>Drinks</NavLink>
         </li>
         <li>
-          <NavLink to={"guest-services"}>Guests services</NavLink>
+          <NavLink to={"guest-services"} className={({ isActive }) => (isActive ? "underline font-bold" : "")}>Guests services</NavLink>
         </li>
       </ul>
     </nav>
