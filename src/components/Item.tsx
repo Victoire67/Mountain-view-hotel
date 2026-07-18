@@ -1,5 +1,13 @@
-import {motion} from "framer-motion"
-export default function Item({ name, price, frenchTr, description }) {
+import { motion } from "framer-motion"
+
+type ItemProps = {
+    name: string
+    price: number
+    frenchTr: string
+    description: string
+}
+
+export default function Item({ name, price, frenchTr, description }: ItemProps) {
     return <div className="sm:w-[588px] my-4">
         <motion.div
             initial={{ opacity: 0, y: 40 }}
