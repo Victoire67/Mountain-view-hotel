@@ -32,7 +32,10 @@ const menus: Record<MenuType, MenuCategory[]> = {
 
 
 export default function MainContentPage({ type }: MainContentPageProps) {
-
+const images = import.meta.glob('../assets/*.{jpg,jpeg,png}', {
+  eager: true,
+  import: 'default',
+});
     const menuData = menus[type]
 
     const [dataOnView, setDataOnView] = useState(0)
@@ -45,7 +48,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
     }
     const currentMenu = menuData[dataOnView]
     console.log(currentMenu)
-    const imageUrl = new URL(currentMenu.img, import.meta.url).href;
+    const imageUrl = images[data[dataOnView].img]
 
     return <div >
         <div className="sm:pt-[20%] pt-[50%] animation-appear text-center h-screen bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent" style={{ backgroundImage: `url(${imageUrl})` }}>
