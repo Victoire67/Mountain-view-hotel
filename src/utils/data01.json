@@ -1,0 +1,97 @@
+[
+  {
+    "description": "Soft Drinks / Boissons Gazeuses",
+    "img": "../assets/drinks/softdrinks.jpg",
+    "items": [
+      { "name": "Coca-Cola", "name_fr": "Coca-Cola", "price": 2000, "currency": "RWF" },
+      { "name": "Fanta Orange", "name_fr": "Fanta Orange", "price": 2000, "currency": "RWF" },
+      { "name": "Sprite", "name_fr": "Sprite", "price": 2000, "currency": "RWF" },
+      { "name": "Tonic Water", "name_fr": "Eau Tonique", "price": 2500, "currency": "RWF" },
+      { "name": "Soda Water", "name_fr": "Eau Gazeuse", "price": 2000, "currency": "RWF" },
+      { "name": "Ginger Ale", "name_fr": "Ginger Ale", "price": 2500, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Juices / Jus",
+    "img": "../assets/drinks/juices.jpg",
+    "items": [
+      { "name": "Fresh Passion Fruit Juice", "name_fr": "Jus de Fruit de la Passion", "price": 3000, "currency": "RWF" },
+      { "name": "Fresh Mango Juice", "name_fr": "Jus de Mangue", "price": 3000, "currency": "RWF" },
+      { "name": "Fresh Pineapple Juice", "name_fr": "Jus d'Ananas", "price": 3000, "currency": "RWF" },
+      { "name": "Fresh Watermelon Juice", "name_fr": "Jus de Pastèque", "price": 3000, "currency": "RWF" },
+      { "name": "Fresh Orange Juice", "name_fr": "Jus d'Orange", "price": 3500, "currency": "RWF" },
+      { "name": "Mixed Fruit Juice", "name_fr": "Jus de Fruits Mélangés", "price": 3500, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Water / Eau",
+    "img": "../assets/drinks/water.jpg",
+    "items": [
+      { "name": "Still Water (Small)", "name_fr": "Eau Plate (Petite)", "price": 1000, "currency": "RWF" },
+      { "name": "Still Water (Large)", "name_fr": "Eau Plate (Grande)", "price": 2000, "currency": "RWF" },
+      { "name": "Sparkling Water (Small)", "name_fr": "Eau Gazeuse (Petite)", "price": 1500, "currency": "RWF" },
+      { "name": "Sparkling Water (Large)", "name_fr": "Eau Gazeuse (Grande)", "price": 2500, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Hot Beverages / Boissons Chaudes",
+    "img": "../assets/drinks/hotbeverages.jpg",
+    "items": [
+      { "name": "Coffee (Black)", "name_fr": "Café Noir", "price": 2000, "currency": "RWF" },
+      { "name": "Coffee (White)", "name_fr": "Café au Lait", "price": 2500, "currency": "RWF" },
+      { "name": "Espresso", "name_fr": "Espresso", "price": 2500, "currency": "RWF" },
+      { "name": "Cappuccino", "name_fr": "Cappuccino", "price": 3000, "currency": "RWF" },
+      { "name": "Tea (Black)", "name_fr": "Thé Noir", "price": 1500, "currency": "RWF" },
+      { "name": "Tea (Milk)", "name_fr": "Thé au Lait", "price": 2000, "currency": "RWF" },
+      { "name": "Hot Chocolate", "name_fr": "Chocolat Chaud", "price": 3000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Beers / Bières",
+    "img": "../assets/drinks/beers.jpg",
+    "items": [
+      { "name": "Primus", "name_fr": "Primus", "price": 2000, "currency": "RWF" },
+      { "name": "Mutzig", "name_fr": "Mutzig", "price": 2500, "currency": "RWF" },
+      { "name": "Skol", "name_fr": "Skol", "price": 2000, "currency": "RWF" },
+      { "name": "Turbo King", "name_fr": "Turbo King", "price": 2500, "currency": "RWF" },
+      { "name": "Heineken", "name_fr": "Heineken", "price": 3000, "currency": "RWF" },
+      { "name": "Amstel", "name_fr": "Amstel", "price": 3000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Wines / Vins",
+    "img": "../assets/drinks/wines.jpg",
+    "items": [
+      { "name": "House Red Wine (Glass)", "name_fr": "Vin Rouge Maison (Verre)", "price": 4000, "currency": "RWF" },
+      { "name": "House White Wine (Glass)", "name_fr": "Vin Blanc Maison (Verre)", "price": 4000, "currency": "RWF" },
+      { "name": "House Rosé Wine (Glass)", "name_fr": "Vin Rosé Maison (Verre)", "price": 4000, "currency": "RWF" },
+      { "name": "House Red Wine (Bottle)", "name_fr": "Vin Rouge Maison (Bouteille)", "price": 18000, "currency": "RWF" },
+      { "name": "House White Wine (Bottle)", "name_fr": "Vin Blanc Maison (Bouteille)", "price": 18000, "currency": "RWF" },
+      { "name": "Sparkling Wine (Bottle)", "name_fr": "Vin Mousseux (Bouteille)", "price": 25000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Spirits & Whiskey / Spiritueux",
+    "img": "../assets/drinks/spirits.jpg",
+    "items": [
+      { "name": "Whiskey (Tot)", "name_fr": "Whisky (Dose)", "price": 5000, "currency": "RWF" },
+      { "name": "Vodka (Tot)", "name_fr": "Vodka (Dose)", "price": 4000, "currency": "RWF" },
+      { "name": "Gin (Tot)", "name_fr": "Gin (Dose)", "price": 4000, "currency": "RWF" },
+      { "name": "Rum (Tot)", "name_fr": "Rhum (Dose)", "price": 4000, "currency": "RWF" },
+      { "name": "Brandy (Tot)", "name_fr": "Brandy (Dose)", "price": 4500, "currency": "RWF" },
+      { "name": "Tequila (Tot)", "name_fr": "Tequila (Dose)", "price": 4500, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "Cocktails / Cocktails",
+    "img": "../assets/drinks/cocktails.jpeg",
+    "items": [
+      { "name": "Mojito", "name_fr": "Mojito", "price": 6000, "currency": "RWF", "description": "White rum, mint, lime, soda water, sugar." },
+      { "name": "Pina Colada", "name_fr": "Pina Colada", "price": 6500, "currency": "RWF", "description": "White rum, coconut cream, pineapple juice." },
+      { "name": "Margarita", "name_fr": "Margarita", "price": 6500, "currency": "RWF", "description": "Tequila, triple sec, lime juice." },
+      { "name": "Cosmopolitan", "name_fr": "Cosmopolitan", "price": 6500, "currency": "RWF", "description": "Vodka, triple sec, cranberry, lime." },
+      { "name": "Passion Fruit Cocktail", "name_fr": "Cocktail au Fruit de la Passion", "price": 6000, "currency": "RWF", "description": "White rum, passion fruit juice, lime." },
+      { "name": "Virgin Mojito", "name_fr": "Mojito Virgin", "price": 4000, "currency": "RWF", "description": "Mint, lime, soda water, sugar (non-alcoholic)." }
+    ]
+  }
+]
