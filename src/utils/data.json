@@ -215,7 +215,7 @@
 },{
   "description": "Chicken Dishes / Plats de Poulet",
   "prep_time": "40 minutes",
-  "img" : "../assets/chikenplate.jpg",
+  "img" : "../assets/chickenplate.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {

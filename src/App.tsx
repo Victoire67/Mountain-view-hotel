@@ -16,7 +16,7 @@ const router = createBrowserRouter([
 
       {
         path: "food",
-        element: <MainContentPage />
+        element: <MainContentPage type="food" />
       }
 
     ]
