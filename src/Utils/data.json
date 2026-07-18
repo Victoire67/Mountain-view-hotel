@@ -1,5 +1,6 @@
 [{
   "prep_time": "20 minutes",
+  "img" : "../assets/coldStater.jpg",
   "items": [
     {
       "name": "Mountain View Salad",
@@ -63,6 +64,7 @@
 {
   "description": "Indian Dishes / Plats Indiens",
   "prep_time": "40 minutes",
+  "img" : "../assets/indianFood.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -124,7 +126,7 @@
 {
   "description": "Asian Dishes / Plats Asiatiques",
   "prep_time": "40 minutes",
-  "note": "Some item names were partially obscured in the source photo (hand covering menu); names are best-effort reconstructions from visible text and price order.",
+  "img" : "../assets/asianFood.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -178,6 +180,7 @@
   ]
 },{
   "description": "Breakfast / Petit Déjeuner",
+  "img" : "../assets/breakfast.jpg",
   "prep_time": "25 minutes",
   "items": [
     {
@@ -212,6 +215,7 @@
 },{
   "description": "Chicken Dishes / Plats de Poulet",
   "prep_time": "40 minutes",
+  "img" : "../assets/chikenplate.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -260,6 +264,7 @@
 },{
   "description": "Fish Dishes / Plats de Poisson",
   "prep_time": "40 minutes",
+  "img" : "../assets/fishFood.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -319,6 +324,7 @@
 },{
   "description": "Pork Dishes / Plats de Porc",
   "prep_time": "40 minutes",
+  "img" : "../assets/porkfood.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -349,6 +355,7 @@
 },{
   "description": "Hot Starters / Entrée Chaude",
   "prep_time": "25 minutes",
+  "img" : "../assets/hotstarter.jpg",
   "items": [
     {
       "name": "Chicken Broth",
@@ -416,6 +423,7 @@
 },{
   "description": "Beef Dishes / Plats de Boeuf",
   "prep_time": "40 minutes",
+  "img" : "../assets/beeffood.jpg",
   "accompaniments_note": "Choose 2 Accompaniments: French fries, Mashed potatoes, Parsley potatoes, Steamed banana, Steamed rice, banana chips.",
   "items": [
     {
@@ -477,6 +485,7 @@
 },{
   "description": "Pasta Dishes / Plats de Pâtes",
   "prep_time": "30 minutes",
+  "img" : "../assets/pastafood.jpg",
   "items": [
     {
       "name": "Spaghetti Bolognaise",
@@ -501,6 +510,7 @@
   ]
 },{
   "description": "Barbecue",
+  "img" : "../assets/barbecuefood.jpg",
   "items": [
     {
       "name": "Goat Brochette",
@@ -625,6 +635,7 @@
 },{
   "description": "Snacks Dishes / Collations",
   "prep_time": "30 minutes",
+  "img" : "../assets/snackfood.jpg",
   "items": [
     {
       "name": "Chicken Wings",
