@@ -35,7 +35,7 @@ export default function Header() {
     </nav>
 
     <a href="#footer">
-      <button className="text-[#FFB82B] hidden sm:block px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors">CONTACT</button>
+      <button className="text-[#FFB82B] hidden sm:block px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors text-white">CONTACT</button>
     </a>
     <ScrollRestoration />
   </header>

@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Layout from "./Layout/Layout";
 import MainContentPage from "./pages/MainContentPage";
-
+import GuestServices from "./pages/GuestServices"
 const router = createBrowserRouter([
   {
 
@@ -18,9 +18,13 @@ const router = createBrowserRouter([
         path: "food",
         element: <MainContentPage type="food" />
       },
-            {
+      {
         path: "drinks",
         element: <MainContentPage type="drinks" />
+      },
+                {
+        path: "guest-services",
+        element: <GuestServices />
       }
 
     ]
