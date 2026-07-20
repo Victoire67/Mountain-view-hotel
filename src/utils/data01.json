@@ -1,97 +1,377 @@
 [
   {
-    "description": "Soft Drinks / Boissons Gazeuses",
+    "description": "N1. Soft Drink",
     "img": "../assets/drinks/softdrinks.jpg",
     "items": [
-      { "name": "Coca-Cola", "name_fr": "Coca-Cola", "price": 2000, "currency": "RWF" },
-      { "name": "Fanta Orange", "name_fr": "Fanta Orange", "price": 2000, "currency": "RWF" },
-      { "name": "Sprite", "name_fr": "Sprite", "price": 2000, "currency": "RWF" },
-      { "name": "Tonic Water", "name_fr": "Eau Tonique", "price": 2500, "currency": "RWF" },
-      { "name": "Soda Water", "name_fr": "Eau Gazeuse", "price": 2000, "currency": "RWF" },
-      { "name": "Ginger Ale", "name_fr": "Ginger Ale", "price": 2500, "currency": "RWF" }
+      { "name": "Fanta", "price": 1500, "currency": "RWF" },
+      { "name": "Mineral Water 500ml", "price": 1000, "currency": "RWF" },
+      { "name": "Mineral Water 1L", "price": 2000, "currency": "RWF" },
+      { "name": "Red Bull", "price": 3500, "currency": "RWF" },
+      { "name": "Bavaria 0.0 Alcohol", "price": 4000, "currency": "RWF" },
+      { "name": "Heineken 0.0 Alcohol", "price": 3000, "currency": "RWF" },
+      { "name": "Inyange Juice", "price": 1500, "currency": "RWF" },
+      { "name": "Panache 33cl", "price": 1500, "currency": "RWF" },
+      { "name": "Panache 75cl", "price": 2000, "currency": "RWF" }
     ]
   },
   {
-    "description": "Juices / Jus",
-    "img": "../assets/drinks/juices.jpg",
-    "items": [
-      { "name": "Fresh Passion Fruit Juice", "name_fr": "Jus de Fruit de la Passion", "price": 3000, "currency": "RWF" },
-      { "name": "Fresh Mango Juice", "name_fr": "Jus de Mangue", "price": 3000, "currency": "RWF" },
-      { "name": "Fresh Pineapple Juice", "name_fr": "Jus d'Ananas", "price": 3000, "currency": "RWF" },
-      { "name": "Fresh Watermelon Juice", "name_fr": "Jus de Pastèque", "price": 3000, "currency": "RWF" },
-      { "name": "Fresh Orange Juice", "name_fr": "Jus d'Orange", "price": 3500, "currency": "RWF" },
-      { "name": "Mixed Fruit Juice", "name_fr": "Jus de Fruits Mélangés", "price": 3500, "currency": "RWF" }
-    ]
-  },
-  {
-    "description": "Water / Eau",
-    "img": "../assets/drinks/water.jpg",
-    "items": [
-      { "name": "Still Water (Small)", "name_fr": "Eau Plate (Petite)", "price": 1000, "currency": "RWF" },
-      { "name": "Still Water (Large)", "name_fr": "Eau Plate (Grande)", "price": 2000, "currency": "RWF" },
-      { "name": "Sparkling Water (Small)", "name_fr": "Eau Gazeuse (Petite)", "price": 1500, "currency": "RWF" },
-      { "name": "Sparkling Water (Large)", "name_fr": "Eau Gazeuse (Grande)", "price": 2500, "currency": "RWF" }
-    ]
-  },
-  {
-    "description": "Hot Beverages / Boissons Chaudes",
-    "img": "../assets/drinks/hotbeverages.jpg",
-    "items": [
-      { "name": "Coffee (Black)", "name_fr": "Café Noir", "price": 2000, "currency": "RWF" },
-      { "name": "Coffee (White)", "name_fr": "Café au Lait", "price": 2500, "currency": "RWF" },
-      { "name": "Espresso", "name_fr": "Espresso", "price": 2500, "currency": "RWF" },
-      { "name": "Cappuccino", "name_fr": "Cappuccino", "price": 3000, "currency": "RWF" },
-      { "name": "Tea (Black)", "name_fr": "Thé Noir", "price": 1500, "currency": "RWF" },
-      { "name": "Tea (Milk)", "name_fr": "Thé au Lait", "price": 2000, "currency": "RWF" },
-      { "name": "Hot Chocolate", "name_fr": "Chocolat Chaud", "price": 3000, "currency": "RWF" }
-    ]
-  },
-  {
-    "description": "Beers / Bières",
+    "description": "N2. Beers",
     "img": "../assets/drinks/beers.jpg",
     "items": [
-      { "name": "Primus", "name_fr": "Primus", "price": 2000, "currency": "RWF" },
-      { "name": "Mutzig", "name_fr": "Mutzig", "price": 2500, "currency": "RWF" },
-      { "name": "Skol", "name_fr": "Skol", "price": 2000, "currency": "RWF" },
-      { "name": "Turbo King", "name_fr": "Turbo King", "price": 2500, "currency": "RWF" },
-      { "name": "Heineken", "name_fr": "Heineken", "price": 3000, "currency": "RWF" },
-      { "name": "Amstel", "name_fr": "Amstel", "price": 3000, "currency": "RWF" }
+      { "name": "Petit Skol Malt", "price": 2000, "currency": "RWF" },
+      { "name": "Skol Lager", "price": 2000, "currency": "RWF" },
+      { "name": "Petit Mutzig", "price": 2000, "currency": "RWF" },
+      { "name": "Primus (50cl)", "price": 2000, "currency": "RWF" },
+      { "name": "Amstel", "price": 2000, "currency": "RWF" },
+      { "name": "Broke (small)", "price": 3000, "currency": "RWF" },
+      { "name": "Bavaria Alcohol", "price": 5000, "currency": "RWF" },
+      { "name": "Guinness", "price": 2500, "currency": "RWF" },
+      { "name": "Heineken", "price": 3000, "currency": "RWF" },
+      { "name": "Tusker Malt", "price": 2500, "currency": "RWF" },
+      { "name": "Tusker Lager", "price": 3000, "currency": "RWF" },
+      { "name": "Tusker Light", "price": 3000, "currency": "RWF" },
+      { "name": "Legend", "price": 2000, "currency": "RWF" },
+      { "name": "Smirnoff Ice", "price": 3500, "currency": "RWF" },
+      { "name": "Guarana", "price": 4000, "currency": "RWF" },
+      { "name": "Leffe", "price": 4500, "currency": "RWF" },
+      { "name": "Big Primus", "price": 2500, "currency": "RWF" },
+      { "name": "Savana", "price": 5000, "currency": "RWF" },
+      { "name": "Carlsberg", "price": 4000, "currency": "RWF" },
+      { "name": "Flo Beer", "price": 4500, "currency": "RWF" },
+      { "name": "Desperados", "price": 4500, "currency": "RWF" },
+      { "name": "Virunga Mixt", "price": 2000, "currency": "RWF" },
+      { "name": "Virunga Gold", "price": 2000, "currency": "RWF" },
+      { "name": "Virunga Silver", "price": 2000, "currency": "RWF" },
+      { "name": "Legend (alt.)", "price": 2500, "currency": "RWF", "description": "Listed twice on the menu with two different prices (2,000RWF and 2,500RWF) — likely two pack sizes; confirm with venue." }
     ]
   },
   {
-    "description": "Wines / Vins",
+    "description": "N3. Gin",
+    "img": "../assets/drinks/gin.jpg",
+    "items": [
+      { "name": "Gordon's Gin 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Gordon's Gin Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Gordon's Gin Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Gilbey's Gin 1 Bottle 750ml", "price": 25000, "currency": "RWF" },
+      { "name": "Gilbey's Gin Quarter 200ml", "price": 7000, "currency": "RWF" },
+      { "name": "Beefeater 1 Bottle", "price": 70000, "currency": "RWF" },
+      { "name": "Beefeater Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Beefeater 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Hendrick's Gin Bottle", "price": 180000, "currency": "RWF" },
+      { "name": "Hendrick's Quarter", "price": 50000, "currency": "RWF" },
+      { "name": "Hendrick's Shot", "price": 8000, "currency": "RWF" },
+      { "name": "Konyagi 750ml", "price": 20000, "currency": "RWF" },
+      { "name": "Konyagi Half", "price": 12000, "currency": "RWF" },
+      { "name": "Konyagi Quarter", "price": 5000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N4. Rum",
+    "img": "../assets/drinks/rum.jpg",
+    "items": [
+      { "name": "Bacardi 1 Bottle", "price": 70000, "currency": "RWF" },
+      { "name": "Bacardi Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Bacardi 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Captain Morgan 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Captain Morgan Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Captain Morgan 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Malibu 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Malibu Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Malibu 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Campari Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Campari Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Campari Shot", "price": 4000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N5. Cognac",
+    "img": "../assets/drinks/cognac.jpg",
+    "items": [
+      { "name": "Cognac Martel 1 Bottle (V.S)", "price": 180000, "currency": "RWF" },
+      { "name": "Cognac Martel 1 Bottle (V.S.O.P)", "price": 220000, "currency": "RWF" },
+      { "name": "Cognac Martel Quarter (V.S)", "price": 45000, "currency": "RWF" },
+      { "name": "Cognac Martel Quarter (V.S.O.P)", "price": 70000, "currency": "RWF" },
+      { "name": "Cognac Martel 1 Shot (V.S)", "price": 8000, "currency": "RWF" },
+      { "name": "Cognac Martel 1 Shot (V.S.O.P)", "price": 10000, "currency": "RWF" },
+      { "name": "Hennessy 1 Bottle (V.S)", "price": 180000, "currency": "RWF" },
+      { "name": "Hennessy 1 Bottle (V.S.O.P)", "price": 220000, "currency": "RWF" },
+      { "name": "Hennessy Quarter (V.S)", "price": 50000, "currency": "RWF" },
+      { "name": "Hennessy Quarter (V.S.O.P)", "price": 60000, "currency": "RWF" },
+      { "name": "Hennessy 1 Shot (V.S)", "price": 8000, "currency": "RWF" },
+      { "name": "Hennessy 1 Shot (V.S.O.P)", "price": 10000, "currency": "RWF" },
+      { "name": "Courvoisier 1 Bottle (V.S)", "price": 160000, "currency": "RWF" },
+      { "name": "Courvoisier 1 Bottle (V.S.O.P)", "price": 200000, "currency": "RWF" },
+      { "name": "Courvoisier Quarter (V.S)", "price": 40000, "currency": "RWF" },
+      { "name": "Courvoisier Quarter (V.S.O.P)", "price": 50000, "currency": "RWF" },
+      { "name": "Courvoisier 1 Shot (V.S)", "price": 7000, "currency": "RWF" },
+      { "name": "Courvoisier 1 Shot (V.S.O.P)", "price": 9000, "currency": "RWF" },
+      { "name": "Remy Martin 1 Bottle", "price": 250000, "currency": "RWF" },
+      { "name": "Remy Martin Quarter", "price": 70000, "currency": "RWF" },
+      { "name": "Remy Martin 1 Shot", "price": 10000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N6. Champagne",
+    "img": "../assets/drinks/champagne.jpg",
+    "items": [
+      { "name": "Moët & Chandon", "price": 200000, "currency": "RWF" },
+      { "name": "Veuve Clicquot", "price": 220000, "currency": "RWF" },
+      { "name": "Muscador 1 Bottle", "price": 35000, "currency": "RWF" },
+      { "name": "Pure Heaven", "price": 18000, "currency": "RWF" },
+      { "name": "Baron d'Arignac", "price": 35000, "currency": "RWF" },
+      { "name": "Canetelli Bottle", "price": 35000, "currency": "RWF" },
+      { "name": "Rendez-vous", "price": 15000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N7. Whiskey",
+    "img": "../assets/drinks/whiskey.jpg",
+    "items": [
+      { "name": "Johnnie Walker Red Label Bottle", "price": 100000, "currency": "RWF" },
+      { "name": "Johnnie Walker Red Label Quarter", "price": 30000, "currency": "RWF" },
+      { "name": "Johnnie Walker Red Label 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Jack Daniel's Bottle", "price": 100000, "currency": "RWF" },
+      { "name": "Jack Daniel's Quarter", "price": 30000, "currency": "RWF" },
+      { "name": "Jack Daniel's 1 Shot", "price": 5000, "currency": "RWF" },
+      { "name": "Black Label Bottle", "price": 120000, "currency": "RWF" },
+      { "name": "Black Label Quarter", "price": 30000, "currency": "RWF" },
+      { "name": "Black Label 1 Shot", "price": 6000, "currency": "RWF" },
+      { "name": "Double Black Bottle", "price": 150000, "currency": "RWF" },
+      { "name": "Double Black Quarter", "price": 50000, "currency": "RWF" },
+      { "name": "Double Black 1 Shot", "price": 7000, "currency": "RWF" },
+      { "name": "Chivas Whisky 1 Bottle (18yr)", "price": 180000, "currency": "RWF" },
+      { "name": "Chivas Whisky Quarter (18yr)", "price": 45000, "currency": "RWF" },
+      { "name": "Chivas Whisky 1 Shot (18yr)", "price": 8000, "currency": "RWF" },
+      { "name": "Chivas Whisky 1 Bottle (12yr)", "price": 120000, "currency": "RWF" },
+      { "name": "Chivas Whisky Quarter (12yr)", "price": 30000, "currency": "RWF" },
+      { "name": "Chivas Whisky 1 Shot (12yr)", "price": 6000, "currency": "RWF" },
+      { "name": "Jameson Black Barrel 1 Bottle", "price": 90000, "currency": "RWF" },
+      { "name": "Jameson Black Barrel Quarter", "price": 25000, "currency": "RWF" },
+      { "name": "Jameson Black Barrel Shot", "price": 5000, "currency": "RWF" },
+      { "name": "Jameson Bottle 1L", "price": 80000, "currency": "RWF" },
+      { "name": "Jameson Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Jameson Shot", "price": 4000, "currency": "RWF" },
+      { "name": "William Lawson's 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "William Lawson's Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "William Lawson's Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Eperon 1 Bottle", "price": 70000, "currency": "RWF" },
+      { "name": "Eperon Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Eperon Shot", "price": 4000, "currency": "RWF" },
+      { "name": "J&B 1 Bottle", "price": 70000, "currency": "RWF" },
+      { "name": "J&B Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "J&B 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Bond 7 Bottle (750ml)", "price": 20000, "currency": "RWF" },
+      { "name": "Bond 7 Half (350ml)", "price": 12000, "currency": "RWF" },
+      { "name": "Bond 7 Quarter (200ml)", "price": 5000, "currency": "RWF" },
+      { "name": "Jägermeister Bottle 1L", "price": 80000, "currency": "RWF" },
+      { "name": "Jägermeister Quarter", "price": 25000, "currency": "RWF" },
+      { "name": "Jägermeister Shot", "price": 5000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N8. Vodka",
+    "img": "../assets/drinks/vodka.jpg",
+    "items": [
+      { "name": "Absolut Vodka 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Absolut Vodka Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Absolut Vodka Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Sky Vodka 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Sky Vodka Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Sky Vodka Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Tequila 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Tequila Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Tequila 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Tundra Vodka 1 Bottle", "price": 50000, "currency": "RWF" },
+      { "name": "Tundra Vodka Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Tundra Vodka Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Grey Goose Vodka 1 Bottle", "price": 50000, "currency": "RWF" },
+      { "name": "Grey Goose Vodka 1/2 Bottle", "price": 25000, "currency": "RWF" },
+      { "name": "Grey Goose Vodka Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Grey Goose Vodka Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Poziakoy Vodka 1 Bottle", "price": 50000, "currency": "RWF" },
+      { "name": "Poziakoy Vodka Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Poziakoy Vodka 1 Shot", "price": 4000, "currency": "RWF" },
+      { "name": "Ciroc Vodka 1 Bottle", "price": 50000, "currency": "RWF" },
+      { "name": "Ciroc Vodka Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Ciroc Vodka Shot", "price": 4000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N9. Liquor / Liqueur",
+    "img": "../assets/drinks/liqueur.jpg",
+    "items": [
+      { "name": "Cointreau 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Cointreau Quarter", "price": 25000, "currency": "RWF" },
+      { "name": "Cointreau Shot", "price": 5000, "currency": "RWF" },
+      { "name": "Amarula 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Amarula 1 Glass", "price": 15000, "currency": "RWF" },
+      { "name": "Baileys 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Baileys 1 Glass", "price": 15000, "currency": "RWF" },
+      { "name": "Bols 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Bols 1 Glass", "price": 12000, "currency": "RWF" },
+      { "name": "Molly's Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Molly's Glass", "price": 12000, "currency": "RWF" },
+      { "name": "Sheridan's 1 Bottle", "price": 100000, "currency": "RWF" },
+      { "name": "Sheridan's 1 Glass", "price": 15000, "currency": "RWF" },
+      { "name": "Tia Maria 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Tia Maria 1 Glass", "price": 10000, "currency": "RWF" },
+      { "name": "Martini 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Martini 1 Glass", "price": 10000, "currency": "RWF" },
+      { "name": "Grand Marnier 1 Bottle", "price": 80000, "currency": "RWF" },
+      { "name": "Grand Marnier 1/2 Bottle", "price": 40000, "currency": "RWF" },
+      { "name": "Grand Marnier Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Grand Marnier Shot", "price": 5000, "currency": "RWF" },
+      { "name": "Sambuca Zappa 1 Bottle", "price": 60000, "currency": "RWF" },
+      { "name": "Sambuca Zappa 1/2 Bottle", "price": 30000, "currency": "RWF" },
+      { "name": "Sambuca Zappa Quarter", "price": 15000, "currency": "RWF" },
+      { "name": "Sambuca Zappa Shot", "price": 5000, "currency": "RWF" },
+      { "name": "Kahlua Coffee", "price": 70000, "currency": "RWF" },
+      { "name": "Kahlua Quarter", "price": 20000, "currency": "RWF" },
+      { "name": "Kahlua Shot", "price": 5000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N10. Wines",
     "img": "../assets/drinks/wines.jpg",
     "items": [
-      { "name": "House Red Wine (Glass)", "name_fr": "Vin Rouge Maison (Verre)", "price": 4000, "currency": "RWF" },
-      { "name": "House White Wine (Glass)", "name_fr": "Vin Blanc Maison (Verre)", "price": 4000, "currency": "RWF" },
-      { "name": "House Rosé Wine (Glass)", "name_fr": "Vin Rosé Maison (Verre)", "price": 4000, "currency": "RWF" },
-      { "name": "House Red Wine (Bottle)", "name_fr": "Vin Rouge Maison (Bouteille)", "price": 18000, "currency": "RWF" },
-      { "name": "House White Wine (Bottle)", "name_fr": "Vin Blanc Maison (Bouteille)", "price": 18000, "currency": "RWF" },
-      { "name": "Sparkling Wine (Bottle)", "name_fr": "Vin Mousseux (Bouteille)", "price": 25000, "currency": "RWF" }
+      { "name": "Domain Bergo", "price": 30000, "currency": "RWF" },
+      { "name": "Mouton Cadet", "price": 40000, "currency": "RWF" },
+      { "name": "Chateau Ricaud", "price": 35000, "currency": "RWF" },
+      { "name": "Foot Print", "price": 30000, "currency": "RWF" },
+      { "name": "Nederberg", "price": 35000, "currency": "RWF" },
+      { "name": "Chateau Gillet", "price": 35000, "currency": "RWF" },
+      { "name": "Pintanegra", "price": 30000, "currency": "RWF" },
+      { "name": "Four Cousins", "price": 30000, "currency": "RWF" },
+      { "name": "Four Cousins 1.5L", "price": 35000, "currency": "RWF" },
+      { "name": "Drosty Bottle", "price": 25000, "currency": "RWF" },
+      { "name": "Glass of Wine", "price": 5000, "currency": "RWF" },
+      { "name": "Pitcher (Carafe)", "price": 10000, "currency": "RWF" },
+      { "name": "Jean Degaves", "price": 35000, "currency": "RWF" },
+      { "name": "Mateus Rosé", "price": 40000, "currency": "RWF" },
+      { "name": "Robertson", "price": 25000, "currency": "RWF" },
+      { "name": "Maison J. Grandet", "price": 30000, "currency": "RWF" },
+      { "name": "Isabelle de France", "price": 30000, "currency": "RWF" },
+      { "name": "Grand Verdu", "price": 35000, "currency": "RWF" },
+      { "name": "Demon Noir", "price": 30000, "currency": "RWF" },
+      { "name": "Bordeaux Supérieur", "price": 40000, "currency": "RWF" }
     ]
   },
   {
-    "description": "Spirits & Whiskey / Spiritueux",
-    "img": "../assets/drinks/spirits.jpg",
-    "items": [
-      { "name": "Whiskey (Tot)", "name_fr": "Whisky (Dose)", "price": 5000, "currency": "RWF" },
-      { "name": "Vodka (Tot)", "name_fr": "Vodka (Dose)", "price": 4000, "currency": "RWF" },
-      { "name": "Gin (Tot)", "name_fr": "Gin (Dose)", "price": 4000, "currency": "RWF" },
-      { "name": "Rum (Tot)", "name_fr": "Rhum (Dose)", "price": 4000, "currency": "RWF" },
-      { "name": "Brandy (Tot)", "name_fr": "Brandy (Dose)", "price": 4500, "currency": "RWF" },
-      { "name": "Tequila (Tot)", "name_fr": "Tequila (Dose)", "price": 4500, "currency": "RWF" }
-    ]
-  },
-  {
-    "description": "Cocktails / Cocktails",
+    "description": "N11. Cocktail",
     "img": "../assets/drinks/cocktails.jpeg",
     "items": [
-      { "name": "Mojito", "name_fr": "Mojito", "price": 6000, "currency": "RWF", "description": "White rum, mint, lime, soda water, sugar." },
-      { "name": "Pina Colada", "name_fr": "Pina Colada", "price": 6500, "currency": "RWF", "description": "White rum, coconut cream, pineapple juice." },
-      { "name": "Margarita", "name_fr": "Margarita", "price": 6500, "currency": "RWF", "description": "Tequila, triple sec, lime juice." },
-      { "name": "Cosmopolitan", "name_fr": "Cosmopolitan", "price": 6500, "currency": "RWF", "description": "Vodka, triple sec, cranberry, lime." },
-      { "name": "Passion Fruit Cocktail", "name_fr": "Cocktail au Fruit de la Passion", "price": 6000, "currency": "RWF", "description": "White rum, passion fruit juice, lime." },
-      { "name": "Virgin Mojito", "name_fr": "Mojito Virgin", "price": 4000, "currency": "RWF", "description": "Mint, lime, soda water, sugar (non-alcoholic)." }
+      { "name": "Iwacu Cocktail", "price": 15000, "currency": "RWF", "description": "Tequila, Whisky, lemon juice, orange juice, passion juice, grenadine." },
+      { "name": "Blue Mountain View", "price": 20000, "currency": "RWF", "description": "Vodka, Gin, Tequila, whisky, coconut milk, simple syrup, pineapple juice." },
+      { "name": "Long Island", "price": 20000, "currency": "RWF", "description": "Tequila, gin, vodka, rum, Cointreau, lemon, Coca-Cola." },
+      { "name": "Classic Mojito", "price": 15000, "currency": "RWF", "description": "Bacardi, lemon juice, light sugar, mint, soda." },
+      { "name": "Pina Colada", "price": 15000, "currency": "RWF", "description": "Coconut milk, pineapple juice, simple syrup, rum." },
+      { "name": "Tequila Sunrise", "price": 10000, "currency": "RWF", "description": "Tequila, orange juice, light sugar, grenadine, soda water." },
+      { "name": "Blue Hawaii", "price": 15000, "currency": "RWF", "description": "Vodka, white rum, blue curaçao, lemon juice, pineapple juice." },
+      { "name": "Aperol Spritz", "price": 10000, "currency": "RWF", "description": "Aperol, prosecco, soda water, orange sliced." },
+      { "name": "Pornstar Martini", "price": 15000, "currency": "RWF", "description": "Vanilla vodka, passion fruit, lemon juice, prosecco, vanilla sugar." },
+      { "name": "Sex on the Beach", "price": 15000, "currency": "RWF", "description": "Vodka, orange juice, cranberry juice." },
+      { "name": "Espresso Martini", "price": 15000, "currency": "RWF", "description": "Vodka, espresso, coffee liqueur, syrup." },
+      { "name": "Whisky Sour", "price": 15000, "currency": "RWF", "description": "Whisky, lemon juice, syrup, egg white." },
+      { "name": "Margarita", "price": 15000, "currency": "RWF", "description": "Tequila, Cointreau, lemon juice." },
+      { "name": "Garibaldi Cocktail", "price": 15000, "currency": "RWF", "description": "Campari, orange juice, syrup." }
+    ]
+  },
+  {
+    "description": "N12. Bar Short Cocktail",
+    "img": "../assets/drinks/shortcocktails.jpg",
+    "items": [
+      { "name": "B52", "price": 10000, "currency": "RWF", "description": "Kahlua, Baileys, Cointreau." },
+      { "name": "Jäger Creamy", "price": 12000, "currency": "RWF", "description": "Jägermeister, Baileys." },
+      { "name": "Baby Guinness", "price": 10000, "currency": "RWF", "description": "Kahlua, Baileys." },
+      { "name": "Blue Kamikaze", "price": 10000, "currency": "RWF", "description": "Blue curaçao, Vodka, Cointreau, lemon juice." }
+    ]
+  },
+  {
+    "description": "N13. Mocktails",
+    "img": "../assets/drinks/mocktails.jpg",
+    "items": [
+      { "name": "Virgin Mojito", "price": 10000, "currency": "RWF", "description": "Lemon juice, mint, club soda, sugar." },
+      { "name": "Tropical Sunrise", "price": 10000, "currency": "RWF", "description": "Grenadine, orange juice, soda." },
+      { "name": "Pussy Foot", "price": 10000, "currency": "RWF", "description": "Orange juice, lemon juice, coconut milk, simple syrup." },
+      { "name": "Virgin Pina Colada", "price": 10000, "currency": "RWF", "description": "Pineapple juice, coconut milk, simple syrup." },
+      { "name": "Strawberry Colada", "price": 10000, "currency": "RWF", "description": "Heavy milk, strawberry, pineapple juice." }
+    ]
+  },
+  {
+    "description": "N14. Hot Drinks",
+    "img": "../assets/drinks/hotdrinks.jpg",
+    "items": [
+      { "name": "African Tea", "price": 3000, "currency": "RWF" },
+      { "name": "Hot Milk", "price": 3000, "currency": "RWF" },
+      { "name": "Spice Tea", "price": 5000, "currency": "RWF" },
+      { "name": "Hot Chocolate", "price": 4000, "currency": "RWF" },
+      { "name": "Green Tea", "price": 3000, "currency": "RWF" },
+      { "name": "Black Tea", "price": 3000, "currency": "RWF" },
+      { "name": "English Tea", "price": 4000, "currency": "RWF" },
+      { "name": "Ginger Tea", "price": 3000, "currency": "RWF" },
+      { "name": "Lemon Tea", "price": 3000, "currency": "RWF" },
+      { "name": "Herbal Tea", "price": 5000, "currency": "RWF", "description": "Umuravumba, umwenya, mucyayicyayi, rosemary, turmeric, lemon, ginger." }
+    ]
+  },
+  {
+    "description": "N15. Coffee",
+    "img": "../assets/drinks/coffee.jpg",
+    "items": [
+      { "name": "Black Coffee", "price": 3000, "currency": "RWF" },
+      { "name": "Africa Coffee", "price": 4000, "currency": "RWF" },
+      { "name": "Cappuccino", "price": 3500, "currency": "RWF" },
+      { "name": "Cafe Latte", "price": 3500, "currency": "RWF" },
+      { "name": "Cafe Mocha", "price": 4000, "currency": "RWF" },
+      { "name": "Espresso Single", "price": 2000, "currency": "RWF" },
+      { "name": "Double Espresso", "price": 3000, "currency": "RWF" },
+      { "name": "Macchiato", "price": 4000, "currency": "RWF" },
+      { "name": "Americano", "price": 3500, "currency": "RWF" },
+      { "name": "Iced Coffee", "price": 3500, "currency": "RWF" },
+      { "name": "Iced Coffee Mocha", "price": 4000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N16. Smoothies",
+    "img": "../assets/drinks/smoothies.jpg",
+    "items": [
+      { "name": "Tropical Smoothie", "price": 6500, "currency": "RWF", "description": "Pineapple, mango, papaya, banana and coconut." },
+      { "name": "Pineapple Fruits Smoothie", "price": 6000, "currency": "RWF", "description": "Pineapple, banana and coconut." },
+      { "name": "Mango Mango Smoothie", "price": 6000, "currency": "RWF", "description": "Mango." },
+      { "name": "Tangy Orange Smoothie", "price": 7000, "currency": "RWF", "description": "Orange, banana and frozen yoghurt." },
+      { "name": "Orange Smoothie", "price": 6000, "currency": "RWF", "description": "Orange, carrot, banana and frozen yoghurt." },
+      { "name": "Orange Carrot Smoothie", "price": 6000, "currency": "RWF", "description": "Orange, carrot, banana and frozen yoghurt." },
+      { "name": "Caribbean Smoothie", "price": 6500, "currency": "RWF", "description": "Passion mango, orange and strawberry." },
+      { "name": "Lemon Breeze Smoothie", "price": 7000, "currency": "RWF", "description": "Lemon, orange, banana, pineapple and frozen yoghurt." },
+      { "name": "Honey Smoothie", "price": 7000, "currency": "RWF", "description": "Strawberry, mango, banana, honey, frozen yoghurt." }
+    ]
+  },
+  {
+    "description": "N17. Fresh Juice",
+    "img": "../assets/drinks/juices.jpg",
+    "items": [
+      { "name": "Pineapple Juice", "price": 5000, "currency": "RWF" },
+      { "name": "Orange Juice", "price": 6000, "currency": "RWF" },
+      { "name": "Mango Juice", "price": 6000, "currency": "RWF" },
+      { "name": "Passion Fruit Juice", "price": 5000, "currency": "RWF" },
+      { "name": "Cocktail Juice", "price": 7000, "currency": "RWF" },
+      { "name": "Lemonade Juice", "price": 6000, "currency": "RWF" },
+      { "name": "Lemonade Pineapple", "price": 6000, "currency": "RWF" },
+      { "name": "Lemonade Passion", "price": 6000, "currency": "RWF" },
+      { "name": "Tree Tomato Juice", "price": 5000, "currency": "RWF" },
+      { "name": "Pineapple Ginger", "price": 5000, "currency": "RWF" },
+      { "name": "Watermelon Juice", "price": 5000, "currency": "RWF" },
+      { "name": "Cucumber Juice", "price": 6000, "currency": "RWF" }
+    ]
+  },
+  {
+    "description": "N18. Milk Shake",
+    "img": "../assets/drinks/milkshakes.jpg",
+    "items": [
+      { "name": "Vanilla Milk Shake", "price": 6000, "currency": "RWF" },
+      { "name": "Chocolate Milk Shake", "price": 6000, "currency": "RWF" },
+      { "name": "Banana Milk Shake", "price": 7000, "currency": "RWF" },
+      { "name": "Strawberry Milk Shake", "price": 6000, "currency": "RWF" },
+      { "name": "Mango Milk Shake", "price": 7000, "currency": "RWF" }
     ]
   }
 ]
