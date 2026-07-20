@@ -1,5 +1,5 @@
 import { useScrolled } from "../Hooks/useScrolled"
-import logo from "../assets/logo.png"
+import Logo from "../assets/logo"
 import { NavLink, Link  , ScrollRestoration} from "react-router-dom"
 export default function Header() {
   const scrolled = useScrolled(50)
@@ -11,10 +11,7 @@ export default function Header() {
   return <header className={`flex items-center z-10 ${scrolled ? "bg-black" : "bg-transparent"} transform transition-colors place-content-between px-2 fixed top-0 w-full`}>
 
     <Link to="/">
-      <div className="flex items-center gap-4 font-bold italic">
-        <img className="h-16" src={logo} alt="mountain view logo" />
-        <h1 className="hidden sm:block">MOUNTAIN VIEW HOTEL</h1>
-      </div>
+      <Logo />
     </Link>
 
     <nav >
