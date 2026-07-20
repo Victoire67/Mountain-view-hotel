@@ -13,8 +13,9 @@ export default function Header() {
     <Link to="/">
       <div className="flex">
         <Logo />
-        <div className="hidden sm:grid"> 
-            <h1 className="font-bold text-[#004325]">MOUNTAIN VIEW</h1>
+        <div className="hidden sm:block"> 
+            <h1 className="font-bold text-[#004325] relative text-[32px]" >MOUNTAIN VIEW</h1>
+            <h1 className="text-lg font-bold tracking-wide relative right-8 ">hotel & apartment</h1>
         </div>
       </div>
     </Link>

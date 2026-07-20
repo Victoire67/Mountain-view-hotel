@@ -42,7 +42,7 @@ export default function LandingPage() {
             </h1>
             <div className="sm:flex items-center gap-8 place-content-center">
                 <Link to="/food"> <MenuExploreCard img={food} type="Food" description="Explore the best food in Rwanda" /></Link>
-                <MenuExploreCard img={drink} type="Drinks" description="Explore the best drinks" />
+                <Link to="/drinks">                <MenuExploreCard img={drink} type="Drinks" description="Explore the best drinks" /></Link>
             </div>
         </div>
     </div>

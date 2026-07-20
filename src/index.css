@@ -13,3 +13,7 @@ body {
 .text-primary{
   @apply text-[#FFB82B]
 }
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+}

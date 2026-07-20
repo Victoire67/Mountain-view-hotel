@@ -80,7 +80,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
 
 
         </div>
-        <div className="grid sm:grid-cols-2 mx-4 gap-2">
+        <div className="grid sm:grid-cols-2  gap-2 bg-black px-2 w-full">
             {
                 currentMenu.items.map(item => <Item key={item.name} name={item.name} price={item.price} frenchTr={item.name_fr ?? item.name} description={item.description ?? ""} />)
             }
