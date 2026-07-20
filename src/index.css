@@ -3,11 +3,11 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  @apply bg-black text-neutral-400
+  @apply bg-[#FFB82B] text-white
 }
 
 .bg{
-  @apply bg-[url('../src/assets/bg.jpg')] bg-blend-multiply bg-black/70;
+  @apply bg-[url('../src/assets/bg.jpg')]  bg-yellow-700;
 }
 
 .text-primary{

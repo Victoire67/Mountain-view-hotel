@@ -1,7 +1,7 @@
 export default function Footer(){
   return (
-    <footer className="border-t border-neutral-800 pt-4  text-sm w-full " id="footer">
-      <div className="max-w-4xl px-4 text-neutral-400 w-full">
+    <footer className=" pt-4  text-sm w-full " id="footer">
+      <div className="max-w-4xl px-4 w-full">
         <div className="flex flex-col md:flex-row md:justify-between gap-6">
           <div>
             <div className="font-semibold">Mountain View Hotel</div>
@@ -19,7 +19,7 @@ export default function Footer(){
           </div>
         </div>
 
-        <div className="mt-8 text-xs text-neutral-500">© {new Date().getFullYear()} Mountain View Hotel — All rights reserved.</div>
+        <div className="mt-8 text-xs">© {new Date().getFullYear()} Mountain View Hotel — All rights reserved.</div>
       </div>
     </footer>
   )
