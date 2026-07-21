@@ -42,7 +42,7 @@
       { "name": "Virunga Mixt", "price": 2000, "currency": "RWF" },
       { "name": "Virunga Gold", "price": 2000, "currency": "RWF" },
       { "name": "Virunga Silver", "price": 2000, "currency": "RWF" },
-      { "name": "Legend (alt.)", "price": 2500, "currency": "RWF", "description": "Listed twice on the menu with two different prices (2,000RWF and 2,500RWF) — likely two pack sizes; confirm with venue." }
+      { "name": "Legend (alt.)", "price": 2500, "currency": "RWF"}
     ]
   },
   {
