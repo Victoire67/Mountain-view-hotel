@@ -71,7 +71,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
                         : ""}
                     <div className="mt-16 mx-auto flex items-center place-content-center gap-8 ">
                         <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors" onClick={prevDataOnView}>PREV</button>
-                        <button className="text-[#FFB82B] px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors" onClick={nextDataOnView}>NEXT</button>
+                        <button className="text-[#FFB82B] bg-white px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors" onClick={nextDataOnView}>NEXT</button>
                     </div>
                 </motion.div>
             </AnimatePresence>

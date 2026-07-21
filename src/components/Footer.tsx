@@ -5,17 +5,16 @@ export default function Footer(){
         <div className="flex flex-col md:flex-row md:justify-between gap-6">
           <div>
             <div className="font-semibold">Mountain View Hotel</div>
-            <div className="mt-2">123 Scenic Drive<br/>City, Country</div>
+            <div className="mt-2">KG 14 792 Ave St 5<br/>Kigali, Rwanda</div>
           </div>
 
           <div>
             <div className="font-semibold">Contact</div>
-            <div className="mt-2">+250 (79) 235-4567<br/>hello@mountainview.com</div>
+            <div className="mt-2">+250 (79) 235-4567<br/>mountainviewapartmentsrw@gmail.com</div>
           </div>
 
           <div>
-            <div className="font-semibold">Opening Hours</div>
-            <div className="mt-2">Mon - Sun: 7:00am - 11:00pm</div>
+            <div className="font-semibold">Available 24/7</div>
           </div>
         </div>
 

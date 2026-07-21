@@ -163,7 +163,7 @@
   {
     "description": "Pizza Dishes",
     "prep_time": "30 minutes",
-    "img": "../assets/pizzafood.jpg",
+    "img": "../assets/pizza.jpg",
     "items": [
       { "name": "Mountain View Pizza", "price": 13000, "currency": "RWF", "description": "Cheese, mushrooms, eggs, beef, tomato, onions, pepper." },
       { "name": "Chicken Pizza", "price": 12000, "currency": "RWF", "description": "Chicken, cheese, tomato, pepper, onions." },
@@ -177,7 +177,7 @@
   {
     "description": "A Side Orders Food",
     "prep_time": "30 minutes",
-    "img": "../assets/sidesfood.jpg",
+    "img": "../assets/aside.jpg",
     "items": [
       { "name": "Capon Chicken Fasse (Inzungu)", "price": 30000, "currency": "RWF" },
       { "name": "Local Chicken Fasse (Inyarwanda)", "price": 35000, "currency": "RWF" },
@@ -196,7 +196,7 @@
   {
     "description": "Sandwich",
     "prep_time": "30 minutes",
-    "img": "../assets/sandwich.jpg",
+    "img": "../assets/sandwitch.jpg",
     "items": [
       { "name": "Mountain View Club Sandwich", "price": 12000, "currency": "RWF" },
       { "name": "Ham and Cheese Sandwich", "price": 10000, "currency": "RWF" },

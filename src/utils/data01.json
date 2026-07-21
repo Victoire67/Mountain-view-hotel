@@ -1,6 +1,6 @@
 [
   {
-    "description": "N1. Soft Drink",
+    "description": "Soft Drink",
     "img": "../assets/drinks/softdrinks.jpg",
     "items": [
       { "name": "Fanta", "price": 1500, "currency": "RWF" },
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "description": "N2. Beers",
+    "description": "Beers",
     "img": "../assets/drinks/beers.jpg",
     "items": [
       { "name": "Petit Skol Malt", "price": 2000, "currency": "RWF" },
@@ -46,8 +46,8 @@
     ]
   },
   {
-    "description": "N3. Gin",
-    "img": "../assets/drinks/gin.jpg",
+    "description": "Gin",
+    "img": "../assets/drinks/gordonGin.jpg",
     "items": [
       { "name": "Gordon's Gin 1 Bottle", "price": 60000, "currency": "RWF" },
       { "name": "Gordon's Gin Quarter", "price": 20000, "currency": "RWF" },
@@ -66,8 +66,8 @@
     ]
   },
   {
-    "description": "N4. Rum",
-    "img": "../assets/drinks/rum.jpg",
+    "description": "Rum",
+    "img": "../assets/drinks/bacardi.jpg",
     "items": [
       { "name": "Bacardi 1 Bottle", "price": 70000, "currency": "RWF" },
       { "name": "Bacardi Quarter", "price": 20000, "currency": "RWF" },
@@ -84,7 +84,7 @@
     ]
   },
   {
-    "description": "N5. Cognac",
+    "description": "Cognac",
     "img": "../assets/drinks/cognac.jpg",
     "items": [
       { "name": "Cognac Martel 1 Bottle (V.S)", "price": 180000, "currency": "RWF" },
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "description": "N6. Champagne",
+    "description": "Champagne",
     "img": "../assets/drinks/champagne.jpg",
     "items": [
       { "name": "Moët & Chandon", "price": 200000, "currency": "RWF" },
@@ -124,8 +124,8 @@
     ]
   },
   {
-    "description": "N7. Whiskey",
-    "img": "../assets/drinks/whiskey.jpg",
+    "description": "Whiskey",
+    "img": "../assets/drinks/whisky.jpg",
     "items": [
       { "name": "Johnnie Walker Red Label Bottle", "price": 100000, "currency": "RWF" },
       { "name": "Johnnie Walker Red Label Quarter", "price": 30000, "currency": "RWF" },
@@ -169,7 +169,7 @@
     ]
   },
   {
-    "description": "N8. Vodka",
+    "description": "Vodka",
     "img": "../assets/drinks/vodka.jpg",
     "items": [
       { "name": "Absolut Vodka 1 Bottle", "price": 60000, "currency": "RWF" },
@@ -197,8 +197,8 @@
     ]
   },
   {
-    "description": "N9. Liquor / Liqueur",
-    "img": "../assets/drinks/liqueur.jpg",
+    "description": "Liquor / Liqueur",
+    "img": "../assets/drinks/liquor.jpg",
     "items": [
       { "name": "Cointreau 1 Bottle", "price": 80000, "currency": "RWF" },
       { "name": "Cointreau Quarter", "price": 25000, "currency": "RWF" },
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "description": "N10. Wines",
+    "description": "Wines",
     "img": "../assets/drinks/wines.jpg",
     "items": [
       { "name": "Domain Bergo", "price": 30000, "currency": "RWF" },
@@ -257,7 +257,7 @@
     ]
   },
   {
-    "description": "N11. Cocktail",
+    "description": "Cocktail",
     "img": "../assets/drinks/cocktails.jpeg",
     "items": [
       { "name": "Iwacu Cocktail", "price": 15000, "currency": "RWF", "description": "Tequila, Whisky, lemon juice, orange juice, passion juice, grenadine." },
@@ -277,8 +277,8 @@
     ]
   },
   {
-    "description": "N12. Bar Short Cocktail",
-    "img": "../assets/drinks/shortcocktails.jpg",
+    "description": "Bar Short Cocktail",
+    "img": "../assets/drinks/shot.jpg",
     "items": [
       { "name": "B52", "price": 10000, "currency": "RWF", "description": "Kahlua, Baileys, Cointreau." },
       { "name": "Jäger Creamy", "price": 12000, "currency": "RWF", "description": "Jägermeister, Baileys." },
@@ -287,7 +287,7 @@
     ]
   },
   {
-    "description": "N13. Mocktails",
+    "description": "Mocktails",
     "img": "../assets/drinks/mocktails.jpg",
     "items": [
       { "name": "Virgin Mojito", "price": 10000, "currency": "RWF", "description": "Lemon juice, mint, club soda, sugar." },
@@ -298,8 +298,8 @@
     ]
   },
   {
-    "description": "N14. Hot Drinks",
-    "img": "../assets/drinks/hotdrinks.jpg",
+    "description": "Hot Drinks",
+    "img": "../assets/drinks/hotDrink.jpg",
     "items": [
       { "name": "African Tea", "price": 3000, "currency": "RWF" },
       { "name": "Hot Milk", "price": 3000, "currency": "RWF" },
@@ -314,8 +314,8 @@
     ]
   },
   {
-    "description": "N15. Coffee",
-    "img": "../assets/drinks/coffee.jpg",
+    "description": "Coffee",
+    "img": "../assets/drinks/cofee.jpeg",
     "items": [
       { "name": "Black Coffee", "price": 3000, "currency": "RWF" },
       { "name": "Africa Coffee", "price": 4000, "currency": "RWF" },
@@ -331,8 +331,8 @@
     ]
   },
   {
-    "description": "N16. Smoothies",
-    "img": "../assets/drinks/smoothies.jpg",
+    "description": "Smoothies",
+    "img": "../assets/drinks/smoothie.jpg",
     "items": [
       { "name": "Tropical Smoothie", "price": 6500, "currency": "RWF", "description": "Pineapple, mango, papaya, banana and coconut." },
       { "name": "Pineapple Fruits Smoothie", "price": 6000, "currency": "RWF", "description": "Pineapple, banana and coconut." },
@@ -346,7 +346,7 @@
     ]
   },
   {
-    "description": "N17. Fresh Juice",
+    "description": "Fresh Juice",
     "img": "../assets/drinks/juices.jpg",
     "items": [
       { "name": "Pineapple Juice", "price": 5000, "currency": "RWF" },
@@ -364,14 +364,12 @@
     ]
   },
   {
-    "description": "N18. Milk Shake",
-    "img": "../assets/drinks/milkshakes.jpg",
+    "description": "Milk Shake",
+    "img": "../assets/drinks/milkshake.jpg",
     "items": [
       { "name": "Vanilla Milk Shake", "price": 6000, "currency": "RWF" },
       { "name": "Chocolate Milk Shake", "price": 6000, "currency": "RWF" },
       { "name": "Banana Milk Shake", "price": 7000, "currency": "RWF" },
       { "name": "Strawberry Milk Shake", "price": 6000, "currency": "RWF" },
       { "name": "Mango Milk Shake", "price": 7000, "currency": "RWF" }
-    ]
-  }
-]
+    ]}]
