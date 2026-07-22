@@ -10,7 +10,7 @@ export default function Footer(){
 
           <div>
             <div className="font-semibold">Contact</div>
-            <div className="mt-2">+250 (79) 235-4567<br/>mountainviewapartmentsrw@gmail.com</div>
+            <div className="mt-2">250 788 912 646<br/>mountainviewapartmentsrw@gmail.com</div>
           </div>
 
           <div>
