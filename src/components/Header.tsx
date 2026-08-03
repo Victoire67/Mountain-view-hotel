@@ -8,14 +8,18 @@ export default function Header() {
 
 
 
-  return <header className={`flex items-center z-10 ${scrolled ? "bg-black" : "bg-transparent"} transform transition-colors place-content-between px-2 fixed top-0 w-full`}>
-
+  return <header
+  className="flex items-center z-10 bg-gray-500/60 backdrop-blur-md transform transition-colors font-bold place-content-between px-2 fixed top-0 w-full border-b"
+  style={{
+    borderImage: "linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0) 60%) 1",
+  }}
+>
     <Link to="/">
       <div className="flex">
         <Logo />
         <div className="hidden sm:block"> 
-            <h1 className="font-bold text-[#004325] relative text-[32px]" >MOUNTAIN VIEW</h1>
-            <h1 className="text-lg font-bold tracking-wide relative right-8 ">hotel & apartment</h1>
+            <h1 className="font-bold text-[#004325] relative text-[32px]">MOUNTAIN VIEW</h1>
+            <h1 className="text-lg font-bold tracking-wide relative right-8">hotel & apartment</h1>
         </div>
       </div>
     </Link>

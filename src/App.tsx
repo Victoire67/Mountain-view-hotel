@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import Layout from "./Layout/Layout";
 import MainContentPage from "./pages/MainContentPage";
 import GuestServices from "./pages/GuestServices"
+import Contact from "./pages/Contact"
 const router = createBrowserRouter([
   {
 
@@ -25,6 +26,9 @@ const router = createBrowserRouter([
                 {
         path: "guest-services",
         element: <GuestServices />
+      },                {
+        path: "contact",
+        element: <Contact />
       }
 
     ]

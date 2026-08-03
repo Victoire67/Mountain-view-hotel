@@ -4,7 +4,7 @@ import data from "../utils/data.json";
 import drinks from "../utils/data01.json"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react";
-
+import ScrollToTop from "../components/ScrollToTop"
 type MenuType = "food" | "drinks"
 
 type MainContentPageProps = {
@@ -51,7 +51,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
     const imageUrl = images[currentMenu.img]
 
     return <div >
-        <div className="sm:pt-[20%] pt-[50%] animation-appear text-center h-screen bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent" style={{ backgroundImage: `url(${imageUrl})` }}>
+        <div className="sm:pt-[20%] pt-[50%] animation-appear text-center h-screen/2 pb-4 bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90  to-transparent" style={{ backgroundImage: `url(${imageUrl})` }}>
             <AnimatePresence mode="wait">
                 <motion.div
                     key={dataOnView}
@@ -70,13 +70,11 @@ export default function MainContentPage({ type }: MainContentPageProps) {
                     </p>
                         : ""}
                     <div className="mt-16 mx-auto flex items-center place-content-center gap-8 ">
-                        <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors" onClick={prevDataOnView}>PREV</button>
-                        <button className="text-[#FFB82B] bg-white px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors" onClick={nextDataOnView}>NEXT</button>
+                        <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={prevDataOnView}>PREV</button>
+                        <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={nextDataOnView}>NEXT</button>
                     </div>
                 </motion.div>
             </AnimatePresence>
-
-
 
 
         </div>
@@ -85,7 +83,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
                 currentMenu.items.map(item => <Item key={item.name} name={item.name} price={item.price} frenchTr={item.name_fr ?? item.name} description={item.description ?? ""} />)
             }
         </div>
-
+<ScrollToTop />
     </div>
 
 }

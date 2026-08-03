@@ -31,8 +31,8 @@ export default function LandingPage() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
             >
                 <div className=" mx-auto flex items-center place-content-center gap-8">
-                    <a href="#explore"><button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors">MENU</button></a>
-                    <Link to="guest-services"> <button className="text-[#FFB82B] px-8 py-2 border-amber-200 border hover:text-black hover:bg-[#FFB82B] cursor-pointer transform transition-colors">GUEST SERVICES</button>  </Link> </div>
+                    <a href="#explore"><button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border font-bold hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors">MENU</button></a>
+                    <Link to="guest-services"> <button className="px-8 py-2 border-amber-200 border hover:bg-transparent hover:text-[#FFB82B] bg-[#FFB82B] text-black font-bold cursor-pointer transform transition-colors">GUEST SERVICES</button>  </Link> </div>
             </motion.div>
         </div>
 
@@ -46,5 +46,4 @@ export default function LandingPage() {
             </div>
         </div>
     </div>
-
 } 
