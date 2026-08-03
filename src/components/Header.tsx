@@ -1,8 +1,6 @@
-import { useScrolled } from "../Hooks/useScrolled"
 import Logo from "../assets/logo"
 import { NavLink, Link, ScrollRestoration } from "react-router-dom"
 export default function Header() {
-  const scrolled = useScrolled(50)
 
 
 
