@@ -42,9 +42,11 @@ export default function MainContentPage({ type }: MainContentPageProps) {
 
     function nextDataOnView() {
         setDataOnView(prev => prev + 1 >= menuData.length ? 0 : prev + 1)
+        window.scrollTo(0, 0);
     }
     function prevDataOnView() {
         setDataOnView(prev => prev === 0 ? menuData.length - 1 : prev - 1)
+        window.scrollTo(0, 0);
     }
     const currentMenu = menuData[dataOnView]
     console.log(currentMenu)
@@ -69,10 +71,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
                         <span className="text-white">PREPARATION TIME : {currentMenu.prep_time ?? "Varies"}</span>
                     </p>
                         : ""}
-                    <div className="mt-16 mx-auto flex items-center place-content-center gap-8 ">
-                        <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={prevDataOnView}>PREV</button>
-                        <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={nextDataOnView}>NEXT</button>
-                    </div>
+
                 </motion.div>
             </AnimatePresence>
 
@@ -82,8 +81,13 @@ export default function MainContentPage({ type }: MainContentPageProps) {
             {
                 currentMenu.items.map(item => <Item key={item.name} name={item.name} price={item.price} frenchTr={item.name_fr ?? item.name} description={item.description ?? ""} />)
             }
+            <div className="mb-16 mx-auto flex items-center place-content-center gap-8 ">
+                <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={prevDataOnView}>PREV</button>
+                <button className="text- px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold" onClick={nextDataOnView}>NEXT</button>
+            </div>
         </div>
-<ScrollToTop />
+
+        <ScrollToTop />
     </div>
 
 }
