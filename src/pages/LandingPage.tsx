@@ -1,8 +1,8 @@
 import MenuExploreCard from "../components/MenuExploreCard"
-import food from "../assets/breakfast.jpg"
+import food from "../../public/foods/Breakfast/PetitDéjeuner.jpg"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import drink from "../assets/drinks/corona.jpg"
+import drink from "../../public/drinkss/corona.jpg"
 export default function LandingPage() {
     return <div >
 
