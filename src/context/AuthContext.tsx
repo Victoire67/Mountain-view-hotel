@@ -1,24 +1,43 @@
-// src/context/AuthContext.jsx
-import { createContext, useContext, useState, useEffect } from 'react';
+// src/context/AuthContext.tsx
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-const AuthContext = createContext(null);
+type User = {
+    id: number;
+    email: string;
+    role: string;
+    [key: string]: any; // flexible in case your /api/login returns extra fields
+};
 
-export function AuthProvider({ children } : any) {
-    const [user, setUser] = useState(null);
+type AuthContextType = {
+    user: User | null;
+    login: (userData: User, token: string) => void;
+    logout: () => void;
+    loading: boolean;
+};
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if user token/session exists on initial load
         const storedToken = localStorage.getItem('token');
-        if (storedToken) {
-            // Optional: You can fetch user profile from /api/me using the token
-            const storedUser = JSON.parse(localStorage.getItem('user'));
-            setUser(storedUser);
+        const storedUserRaw = localStorage.getItem('user');
+        if (storedToken && storedUserRaw) {
+            try {
+                const storedUser: User = JSON.parse(storedUserRaw);
+                setUser(storedUser);
+            } catch {
+                // Corrupted localStorage value — clear it
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+            }
         }
         setLoading(false);
     }, []);
 
-    const login = (userData : any, token : any) => {
+    const login = (userData: User, token: string) => {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(userData));
         setUser(userData);
@@ -37,4 +56,10 @@ export function AuthProvider({ children } : any) {
     );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+}
