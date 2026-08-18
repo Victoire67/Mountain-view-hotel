@@ -37,6 +37,7 @@ export async function getItem(req, res) {
 
 // POST /api/menu  (admin only)
 export async function addItem(req, res) {
+  console.log("ADDING AN ITEM")
   try {
     const { name, name_fr, price, type, description, isFood } = req.body;
 

@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "create-admin": "node scripts/createAdmin.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
     "framer-motion": "^10.18.0",
+    "lucide-react": "^1.31.0",
     "pg": "^8.23.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

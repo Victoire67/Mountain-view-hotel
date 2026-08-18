@@ -9,14 +9,13 @@ type MainContentPageProps = {
     type: MenuType;
 };
 
-// Types directly matching your database schema
 type ApiItem = {
-    name: string;             // TEXT PRIMARY KEY
-    price: string | number;            // TEXT NOT NULL
-    name_fr?: string | null;  // TEXT
-    type: string;             // TEXT NOT NULL (acts as the Category group name)
-    description?: string | null; // TEXT
-    isFood: boolean;          // BOOLEAN NOT NULL
+    name: string;
+    price: string | number;
+    name_fr?: string | null;
+    type: string;
+    description?: string | null;
+    isFood: boolean;
 };
 
 type CategoryGroup = {
@@ -24,45 +23,66 @@ type CategoryGroup = {
     items: ApiItem[];
 };
 
+// --- Module-level cache ---
+// Lives outside the component, so it persists across mounts/unmounts
+// (e.g. navigating between /food and /drinks) without a full page reload.
+let itemsCache: ApiItem[] | null = null;
+let itemsCacheTimestamp = 0;
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes — adjust as needed
+
+async function fetchItemsWithCache(): Promise<ApiItem[]> {
+    const isCacheFresh = itemsCache !== null && Date.now() - itemsCacheTimestamp < CACHE_TTL_MS;
+
+    if (isCacheFresh) {
+        return itemsCache!;
+    }
+
+    const response = await fetch("http://localhost:5000/api/items");
+    if (!response.ok) throw new Error("Failed to fetch items");
+    const data = await response.json();
+
+    itemsCache = data;
+    itemsCacheTimestamp = Date.now();
+    return data;
+}
+
 export default function MainContentPage({ type }: MainContentPageProps) {
-    const [items, setItems] = useState<ApiItem[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [items, setItems] = useState<ApiItem[]>(itemsCache ?? []);
+    const [loading, setLoading] = useState(itemsCache === null);
     const [dataOnView, setDataOnView] = useState(0);
 
-    // Fetch items from API
     useEffect(() => {
+        let cancelled = false;
+
         async function getData() {
             try {
-                const response = await fetch("http://localhost:5000/api/items");
-                if (!response.ok) throw new Error("Failed to fetch items");
-                const data = await response.json();
-                setItems(data);
+                const data = await fetchItemsWithCache();
+                if (!cancelled) setItems(data);
             } catch (err) {
                 console.error("Error fetching items:", err);
             } finally {
-                setLoading(false);
+                if (!cancelled) setLoading(false);
             }
         }
+
         getData();
+
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
-    // Filter items based on props (`isFood`) and group them by `type` column
+    // ... rest of the component stays exactly the same ...
+
     const categories: CategoryGroup[] = useMemo(() => {
         const isFoodTarget = type === "food";
-
-        // Filter food vs drinks using the `isFood` boolean column
         const filtered = items.filter(item => item.isFood === isFoodTarget);
-
-        // Group items by their `type` column (e.g., "Starters", "Cocktails")
         const groups: Record<string, CategoryGroup> = {};
 
         filtered.forEach(item => {
             const catName = item.type || "General";
             if (!groups[catName]) {
-                groups[catName] = {
-                    categoryName: catName,
-                    items: []
-                };
+                groups[catName] = { categoryName: catName, items: [] };
             }
             groups[catName].items.push(item);
         });
@@ -70,9 +90,6 @@ export default function MainContentPage({ type }: MainContentPageProps) {
         return Object.values(groups);
     }, [items, type]);
 
-    console.log(type)
-
-    // Reset view index when switching menu type prop
     useEffect(() => {
         setDataOnView(0);
     }, [type]);
@@ -97,17 +114,14 @@ export default function MainContentPage({ type }: MainContentPageProps) {
         return <div className="text-white text-center py-20 bg-black min-h-screen">No items available.</div>;
     }
 
-
     const currentCategory = categories[dataOnView] || categories[0];
-    console.log([...currentCategory.categoryName].filter(x => x !== " ").join(""))
-
-
-    let cat = [...currentCategory.categoryName].filter(x => x !== " ").join("");
-    console.log(`url(../../public/${type}s/${currentCategory.categoryName}.jpg)`)
 
     return (
-        <div >
-            <div className="bg-black/70 sm:pt-[20%] pt-[50%] animation-appear text-center h-screen/2 pb-4 bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent" style={{ backgroundImage: `url(../../public/${type}s/${[...currentCategory.categoryName].filter(x => x != " ").join("")}.jpg)` }}>
+        <div>
+            <div
+                className="bg-black/70 sm:pt-[20%] pt-[50%] animation-appear text-center h-screen/2 pb-4 bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent"
+                style={{ backgroundImage: `url(../../public/${type}s/${[...currentCategory.categoryName].filter(x => x != " ").join("")}.jpg)` }}
+            >
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={dataOnView}
@@ -121,7 +135,7 @@ export default function MainContentPage({ type }: MainContentPageProps) {
                 </AnimatePresence>
             </div>
 
-            <div className="grid sm:grid-cols-2 bg-black px-2 w-full ">
+            <div className="grid sm:grid-cols-2 bg-black px-2 w-full">
                 {currentCategory.items.map(item => (
                     <Item
                         key={item.name}

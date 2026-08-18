@@ -2,9 +2,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-
+import authRoute from  "./src/routes/auth.route.js"
 import itemsRoute from "./src/routes/Items.route.js"
-// import authRoutes from './routes/authRoutes.js';
 import pool from './src/config/db.js';
 
 dotenv.config();
@@ -28,7 +27,8 @@ app.get('/api/health', (req, res) => {
 
 // Routes
 app.use('/api/items', itemsRoute);
-// app.use('/api/auth', authRoutes);
+app.use('/api/login', authRoute);
+
 
 
 // 404 handler
