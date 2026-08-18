@@ -43,7 +43,7 @@ export default function Dashboard() {
     const fetchItems = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`{API_URL}/api/items`);
+            const response = await fetch(`${API_URL}/api/items`);
             if (!response.ok) throw new Error('Failed to fetch items from server');
             const data = await response.json();
             setItems(data);
