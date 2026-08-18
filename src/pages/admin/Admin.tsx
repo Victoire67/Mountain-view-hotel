@@ -176,7 +176,7 @@ export default function Dashboard() {
     const handleDeleteItem = async (id: number) => {
         const token = localStorage.getItem("token");
         try {
-            const res = await fetch(`http://${API_URL}/api/items/${id}`, {
+            const res = await fetch(`${API_URL}/api/items/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
