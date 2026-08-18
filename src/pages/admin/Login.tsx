@@ -3,7 +3,7 @@ import Logo from '../../assets/logo';
 import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-
+const API_URL = import.meta.env.VITE_API_URL
 export default function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function LoginPage() {
         setError('');
 
         try {
-            const response = await fetch(`{API_URL}/api/login`, {
+            const response = await fetch(`${API_URL}/api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
