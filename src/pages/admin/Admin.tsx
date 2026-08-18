@@ -14,6 +14,8 @@ type Item = {
     isFood?: boolean;
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Dashboard() {
     const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
@@ -41,7 +43,7 @@ export default function Dashboard() {
     const fetchItems = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/items');
+            const response = await fetch(`http://${API_URL}/api/items`);
             if (!response.ok) throw new Error('Failed to fetch items from server');
             const data = await response.json();
             setItems(data);
@@ -133,7 +135,7 @@ export default function Dashboard() {
 
         try {
             if (currentItem) {
-                const res = await fetch(`http://localhost:5000/api/items/${currentItem.id}`, {
+                const res = await fetch(`http://${API_URL}/api/items/${currentItem.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -148,7 +150,7 @@ export default function Dashboard() {
                     console.error('Update failed:', await res.text());
                 }
             } else {
-                const res = await fetch('http://localhost:5000/api/items', {
+                const res = await fetch('http://${API_URL}/api/items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -174,7 +176,7 @@ export default function Dashboard() {
     const handleDeleteItem = async (id: number) => {
         const token = localStorage.getItem("token");
         try {
-            const res = await fetch(`http://localhost:5000/api/items/${id}`, {
+            const res = await fetch(`http://${API_URL}/api/items/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

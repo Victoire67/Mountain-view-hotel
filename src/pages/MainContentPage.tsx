@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import ScrollToTop from "../components/ScrollToTop";
 
+const API_URL = import.meta.env.VITE_API_URL;
 type MenuType = "food" | "drinks";
 
 type MainContentPageProps = {
@@ -37,7 +38,7 @@ async function fetchItemsWithCache(): Promise<ApiItem[]> {
         return itemsCache!;
     }
 
-    const response = await fetch("http://localhost:5000/api/items");
+    const response = await fetch(`http://${API_URL}/api/items`);
     if (!response.ok) throw new Error("Failed to fetch items");
     const data = await response.json();
 
