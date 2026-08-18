@@ -1,16 +1,18 @@
 # --- Environment variables (never commit secrets) ---
-.env
-.env.local
-.env.*.local
-server/.env
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
 
 # --- Dependencies ---
 node_modules/
+**/node_modules/
 .pnpm-store/
 
 # --- Build output ---
 dist/
 build/
+server/dist/
 .vite/
 *.tsbuildinfo
 
@@ -36,6 +38,10 @@ desktop.ini
 # --- Testing / coverage ---
 coverage/
 *.lcov
+
+# --- Deployment platform files (auto-generated, don't commit) ---
+.vercel/
+.railway/
 
 # --- Misc ---
 *.local
