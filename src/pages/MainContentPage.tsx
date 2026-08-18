@@ -124,8 +124,9 @@ export default function MainContentPage({ type }: MainContentPageProps) {
         <div>
             <div
                 className="bg-black/70 sm:pt-[20%] pt-[50%] animation-appear text-center h-screen/2 pb-4 bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent"
-                style={{ backgroundImage: `url(../../public/${type}s/${[...currentCategory.categoryName].filter(x => x != " ").join("")}.jpg)` }}
-
+                style={{
+                    backgroundImage: `url(/${type}s/${imageName}.jpg)`
+                }}
             >
                 <AnimatePresence mode="wait">
                     <motion.div
