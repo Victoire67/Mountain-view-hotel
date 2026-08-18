@@ -43,7 +43,7 @@ export default function Dashboard() {
     const fetchItems = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`http://${API_URL}/api/items`);
+            const response = await fetch(`{API_URL}/api/items`);
             if (!response.ok) throw new Error('Failed to fetch items from server');
             const data = await response.json();
             setItems(data);
@@ -135,7 +135,7 @@ export default function Dashboard() {
 
         try {
             if (currentItem) {
-                const res = await fetch(`http://${API_URL}/api/items/${currentItem.id}`, {
+                const res = await fetch(`${API_URL}/api/items/${currentItem.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ export default function Dashboard() {
                     console.error('Update failed:', await res.text());
                 }
             } else {
-                const res = await fetch('http://${API_URL}/api/items', {
+                const res = await fetch('${API_URL}/api/items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
