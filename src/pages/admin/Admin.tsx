@@ -150,7 +150,7 @@ export default function Dashboard() {
                     console.error('Update failed:', await res.text());
                 }
             } else {
-                const res = await fetch('${API_URL}/api/items', {
+                const res = await fetch(`${API_URL}/api/items`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
