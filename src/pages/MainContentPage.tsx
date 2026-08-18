@@ -117,6 +117,9 @@ export default function MainContentPage({ type }: MainContentPageProps) {
 
     const currentCategory = categories[dataOnView] || categories[0];
 
+    const imageName = currentCategory.categoryName.replace(/\s+/g, "");
+
+
     return (
         <div>
             <div
