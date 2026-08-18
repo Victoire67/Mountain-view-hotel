@@ -4,10 +4,20 @@ import {
     Utensils, Coffee, X, CheckCircle, AlertCircle
 } from 'lucide-react';
 
+type Item = {
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+    isAvailable: boolean;
+    description?: string;
+    isFood?: boolean; // present on server data, optional since local mock data doesn't set it
+};
+
 export default function Dashboard() {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     // Search & Filter state
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,10 +30,10 @@ export default function Dashboard() {
     const [deleteConfirmId, setDeleteConfirmId] = useState(null);
 
     // Form State
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
         name: '',
         category: 'food',
-        price: '',
+        price: '',        // kept as string since it's bound to a text input
         isAvailable: true,
         description: ''
     });
@@ -111,80 +121,80 @@ export default function Dashboard() {
         setIsModalOpen(true);
     };
 
-const handleSaveItem = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token");
+    const handleSaveItem = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const token = localStorage.getItem("token");
 
-    // Map form fields to the shape the controller expects
-    const payload = {
-        name: formData.name,
-        name_fr: formData.name, // no separate French name field in the form yet — reuse name for now
-        price: parseFloat(formData.price),
-        type: formData.category,           // controller expects `type`, not `category`
-        isFood: formData.category === 'food', // controller expects boolean `isFood`
-        description: formData.description,
-        isAvailable: formData.isAvailable,
+        // Map form fields to the shape the controller expects
+        const payload = {
+            name: formData.name,
+            name_fr: formData.name, // no separate French name field in the form yet — reuse name for now
+            price: parseFloat(formData.price),
+            type: formData.category,           // controller expects `type`, not `category`
+            isFood: formData.category === 'food', // controller expects boolean `isFood`
+            description: formData.description,
+            isAvailable: formData.isAvailable,
+        };
+
+        try {
+            if (currentItem) {
+                const res = await fetch(`http://localhost:5000/api/items/${currentItem.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const updated = await res.json();
+                    setItems(prev => prev.map(i => i.id === currentItem.id ? { ...i, ...updated } : i));
+                } else {
+                    console.error('Update failed:', await res.text());
+                }
+            } else {
+                const res = await fetch('http://localhost:5000/api/items', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    const newItem = await res.json();
+                    setItems(prev => [...prev, newItem]);
+                } else {
+                    console.error('Create failed:', await res.text());
+                }
+            }
+        } catch (err) {
+            console.error('Failed to save item:', err);
+        } finally {
+            setIsModalOpen(false);
+        }
     };
 
-    try {
-        if (currentItem) {
-            const res = await fetch(`http://localhost:5000/api/items/${currentItem.id}`, {
-                method: 'PUT',
+    const handleDeleteItem = async (id: string) => {
+        const token = localStorage.getItem("token");
+        try {
+            const res = await fetch(`http://localhost:5000/api/items/${id}`, {
+                method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
+                }
             });
             if (res.ok) {
-                const updated = await res.json();
-                setItems(prev => prev.map(i => i.id === currentItem.id ? { ...i, ...updated } : i));
+                setItems(prev => prev.filter(item => item.id !== id));
             } else {
-                console.error('Update failed:', await res.text());
+                console.error('Delete failed:', await res.text());
             }
-        } else {
-            const res = await fetch('http://localhost:5000/api/items', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
-            if (res.ok) {
-                const newItem = await res.json();
-                setItems(prev => [...prev, newItem]);
-            } else {
-                console.error('Create failed:', await res.text());
-            }
+        } catch (err) {
+            console.error('Failed to delete item:', err);
+        } finally {
+            setDeleteConfirmId(null);
         }
-    } catch (err) {
-        console.error('Failed to save item:', err);
-    } finally {
-        setIsModalOpen(false);
-    }
-};
-
-const handleDeleteItem = async (id: string) => {
-    const token = localStorage.getItem("token");
-    try {
-        const res = await fetch(`http://localhost:5000/api/items/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (res.ok) {
-            setItems(prev => prev.filter(item => item.id !== id));
-        } else {
-            console.error('Delete failed:', await res.text());
-        }
-    } catch (err) {
-        console.error('Failed to delete item:', err);
-    } finally {
-        setDeleteConfirmId(null);
-    }
-};
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 p-6 font-sans">
@@ -341,8 +351,8 @@ const handleDeleteItem = async (id: string) => {
                                                 {/* Category Badge */}
                                                 <td className="py-4 px-6">
                                                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold capitalize ${cat === 'food'
-                                                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                                                            : 'bg-amber-50 text-amber-700 border border-amber-200'
+                                                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                                        : 'bg-amber-50 text-amber-700 border border-amber-200'
                                                         }`}>
                                                         {cat === 'food' ? <Utensils className="w-3 h-3" /> : <Coffee className="w-3 h-3" />}
                                                         {cat}

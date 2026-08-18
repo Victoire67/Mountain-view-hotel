@@ -7,13 +7,11 @@ import { useAuth } from '../../context/AuthContext';
 export default function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [formData, setFormData] = useState({ email: '', password: '', rememberMe: false });
     const [error, setError] = useState('');
-
-
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
         setFormData((prev) => ({
             ...prev,
@@ -21,8 +19,7 @@ export default function LoginPage() {
         }));
     };
 
-  const handleSubmit = async (e) => {
-
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
@@ -39,27 +36,21 @@ export default function LoginPage() {
                 throw new Error(data.message || 'Login failed');
             }
 
-            // Save user and token to Auth Context
             login(data.user, data.token);
-
-            // Navigate to dashboard/home after successful login
             navigate('/dashboard');
         } catch (err) {
-            setError(err.message);
+            const message = err instanceof Error ? err.message : 'Login failed';
+            setError(message);
         }
     };
+
     return (
         <div className="bg relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat">
-            {/* Dark overlay for contrast */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
-            {/* Main Card Container */}
             <div className="relative z-10 w-full max-w-md mx-4 p-8 bg-white/95 rounded-2xl shadow-2xl border border-white/20">
-
-                {/* Logo Placeholder */}
                 <div className="flex flex-col items-center mb-8">
                     <Logo />
-
                     <h1 className="text-2xl font-bold tracking-tight text-gray-800 text-center">
                         Mountain View
                     </h1>
@@ -68,14 +59,16 @@ export default function LoginPage() {
                     </p>
                 </div>
 
-                {/* Login Form */}
                 <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Email Input */}
+                    {/* Error banner — this also fixes the "declared but never read" warning */}
+                    {error && (
+                        <div className="bg-rose-50 border border-rose-200 text-rose-700 text-sm px-3 py-2 rounded-lg">
+                            {error}
+                        </div>
+                    )}
+
                     <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1"
-                        >
+                        <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">
                             Email Address / Username
                         </label>
                         <div className="relative flex items-center">
@@ -93,12 +86,8 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    {/* Password Input */}
                     <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1"
-                        >
+                        <label htmlFor="password" className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">
                             Password
                         </label>
                         <div className="relative flex items-center">
@@ -118,16 +107,11 @@ export default function LoginPage() {
                                 onClick={() => setShowPassword(!showPassword)}
                                 className="absolute right-3.5 text-gray-400 hover:text-gray-600 focus:outline-none"
                             >
-                                {showPassword ? (
-                                    <EyeOff className="w-5 h-5" />
-                                ) : (
-                                    <Eye className="w-5 h-5" />
-                                )}
+                                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                             </button>
                         </div>
                     </div>
 
-                    {/* Remember Me & Forgot Password */}
                     <div className="flex items-center justify-between text-xs text-gray-600">
                         <label className="flex items-center cursor-pointer select-none">
                             <input
@@ -145,7 +129,6 @@ export default function LoginPage() {
                         </a>
                     </div>
 
-                    {/* Submit Button */}
                     <button
                         type="submit"
                         className="w-full py-3 px-4 rounded-lg bg-[#FFB82B] cursor-pointer hover:bg-emerald-800 text-white font-semibold active:bg-green-500 text-sm transition duration-150 shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center gap-2"
@@ -155,7 +138,6 @@ export default function LoginPage() {
                     </button>
                 </form>
 
-                {/* Footer info */}
                 <div className="mt-8 pt-4 border-t border-gray-100 text-center">
                     <p className="text-xs text-gray-400">
                         &copy; {new Date().getFullYear()} Mountain View Hotel & Apartment. All rights reserved.
