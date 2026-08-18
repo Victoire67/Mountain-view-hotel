@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
-    Search, Plus, Trash2, Edit2, RefreshCw, Filter,
-    Utensils, Coffee, X, CheckCircle, AlertCircle
+    Search, Plus, Trash2, Edit2, RefreshCw,
+    Utensils, Coffee, X, AlertCircle
 } from 'lucide-react';
 
 type Item = {
@@ -11,13 +11,12 @@ type Item = {
     price: number;
     isAvailable: boolean;
     description?: string;
-    isFood?: boolean; // present on server data, optional since local mock data doesn't set it
+    isFood?: boolean;
 };
 
 export default function Dashboard() {
     const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
 
     // Search & Filter state
     const [searchTerm, setSearchTerm] = useState('');
@@ -26,14 +25,14 @@ export default function Dashboard() {
 
     // Modal states
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentItem, setCurrentItem] = useState(null); // null = Add, object = Edit
-    const [deleteConfirmId, setDeleteConfirmId] = useState(null);
+    const [currentItem, setCurrentItem] = useState<Item | null>(null); // null = Add, object = Edit
+    const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
     // Form State
-  const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         name: '',
         category: 'food',
-        price: '',        // kept as string since it's bound to a text input
+        price: '',
         isAvailable: true,
         description: ''
     });
@@ -41,20 +40,19 @@ export default function Dashboard() {
     // 1. Fetch Items from /items API
     const fetchItems = async () => {
         setLoading(true);
-        setError(null);
         try {
             const response = await fetch('http://localhost:5000/api/items');
             if (!response.ok) throw new Error('Failed to fetch items from server');
             const data = await response.json();
             setItems(data);
         } catch (err) {
-            setError(err.message || 'Something went wrong');
+            console.error(err instanceof Error ? err.message : 'Something went wrong');
             // Fallback mockup data for preview/testing purposes
             setItems([
-                { id: '1', name: 'Grilled Mountain Trout', category: 'food', price: 18.5, isAvailable: true, description: 'Fresh trout with herb butter' },
-                { id: '2', name: 'Fresh Mango Juice', category: 'drink', price: 4.0, isAvailable: true, description: 'Chilled natural fresh juice' },
-                { id: '3', name: 'Beef Burger & Fries', category: 'food', price: 12.0, isAvailable: false, description: 'Classic beef patty with cheddar cheese' },
-                { id: '4', name: 'Espresso Coffee', category: 'drink', price: 3.5, isAvailable: true, description: 'Double shot espresso' }
+                { id: 1, name: 'Grilled Mountain Trout', category: 'food', price: 18.5, isAvailable: true, description: 'Fresh trout with herb butter' },
+                { id: 2, name: 'Fresh Mango Juice', category: 'drink', price: 4.0, isAvailable: true, description: 'Chilled natural fresh juice' },
+                { id: 3, name: 'Beef Burger & Fries', category: 'food', price: 12.0, isAvailable: false, description: 'Classic beef patty with cheddar cheese' },
+                { id: 4, name: 'Espresso Coffee', category: 'drink', price: 3.5, isAvailable: true, description: 'Double shot espresso' }
             ]);
         } finally {
             setLoading(false);
@@ -68,14 +66,12 @@ export default function Dashboard() {
     // 2. Filter & Sort Logic (Derived purely from `items` without mutating state)
     const filteredItems = useMemo(() => {
         return items
-            .filter((item) => {
-                // Search filter
+            .filter((item: Item) => {
                 const matchesSearch =
                     item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     item.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     item.price?.toString().includes(searchTerm);
 
-                // Category Filter (Handles 'category' string or boolean 'isFood' fallback)
                 const itemCategory = item.category
                     ? item.category.toLowerCase().trim()
                     : (item.isFood ? 'food' : 'drink');
@@ -109,12 +105,12 @@ export default function Dashboard() {
         setIsModalOpen(true);
     };
 
-    const handleOpenEditModal = (item) => {
+    const handleOpenEditModal = (item: Item) => {
         setCurrentItem(item);
         setFormData({
             name: item.name,
             category: item.category || (item.isFood ? 'food' : 'drink'),
-            price: item.price,
+            price: String(item.price),
             isAvailable: item.isAvailable,
             description: item.description || ''
         });
@@ -125,13 +121,12 @@ export default function Dashboard() {
         e.preventDefault();
         const token = localStorage.getItem("token");
 
-        // Map form fields to the shape the controller expects
         const payload = {
             name: formData.name,
-            name_fr: formData.name, // no separate French name field in the form yet — reuse name for now
+            name_fr: formData.name,
             price: parseFloat(formData.price),
-            type: formData.category,           // controller expects `type`, not `category`
-            isFood: formData.category === 'food', // controller expects boolean `isFood`
+            type: formData.category,
+            isFood: formData.category === 'food',
             description: formData.description,
             isAvailable: formData.isAvailable,
         };
@@ -175,14 +170,13 @@ export default function Dashboard() {
         }
     };
 
-    const handleDeleteItem = async (id: string) => {
+    // 4. Delete Handler
+    const handleDeleteItem = async (id: number) => {
         const token = localStorage.getItem("token");
         try {
             const res = await fetch(`http://localhost:5000/api/items/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+                headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
                 setItems(prev => prev.filter(item => item.id !== id));
@@ -255,14 +249,11 @@ export default function Dashboard() {
                             <Coffee className="w-5 h-5" />
                         </div>
                     </div>
-
-
                 </div>
 
                 {/* --- Search, Filter & Controls Panel --- */}
                 <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
 
-                    {/* Search Input */}
                     <div className="relative w-full md:w-96">
                         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <input
@@ -274,10 +265,7 @@ export default function Dashboard() {
                         />
                     </div>
 
-                    {/* Filters & Sorting */}
                     <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-
-                        {/* Category Filter */}
                         <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-lg p-1 text-xs">
                             <button
                                 type="button"
@@ -302,7 +290,6 @@ export default function Dashboard() {
                             </button>
                         </div>
 
-                        {/* Sorting */}
                         <select
                             value={sortBy}
                             onChange={(e) => setSortBy(e.target.value)}
@@ -331,16 +318,14 @@ export default function Dashboard() {
                                         <th className="py-3.5 px-6">Item Name & Description</th>
                                         <th className="py-3.5 px-6">Category</th>
                                         <th className="py-3.5 px-6">Price</th>
-
                                         <th className="py-3.5 px-6 text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-100 text-sm">
-                                    {filteredItems.map((item) => {
+                                    {filteredItems.map((item: Item) => {
                                         const cat = item.category || (item.isFood ? 'food' : 'drink');
                                         return (
                                             <tr key={item.id} className="hover:bg-gray-50/60 transition">
-                                                {/* Name & Description */}
                                                 <td className="py-4 px-6">
                                                     <p className="font-semibold text-gray-800">{item.name}</p>
                                                     {item.description && (
@@ -348,26 +333,20 @@ export default function Dashboard() {
                                                     )}
                                                 </td>
 
-                                                {/* Category Badge */}
                                                 <td className="py-4 px-6">
                                                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold capitalize ${cat === 'food'
-                                                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                                                        : 'bg-amber-50 text-amber-700 border border-amber-200'
+                                                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                                            : 'bg-amber-50 text-amber-700 border border-amber-200'
                                                         }`}>
                                                         {cat === 'food' ? <Utensils className="w-3 h-3" /> : <Coffee className="w-3 h-3" />}
                                                         {cat}
                                                     </span>
                                                 </td>
 
-                                                {/* Price */}
                                                 <td className="py-4 px-6 font-semibold text-gray-700">
                                                     RWF {Number(item.price || 0).toLocaleString()}
                                                 </td>
 
-
-
-
-                                                {/* Action Buttons */}
                                                 <td className="py-4 px-6 text-right space-x-2">
                                                     <button
                                                         onClick={() => handleOpenEditModal(item)}
@@ -451,7 +430,7 @@ export default function Dashboard() {
                             <div>
                                 <label className="block text-xs font-semibold uppercase text-gray-600 mb-1">Description</label>
                                 <textarea
-                                    rows="2"
+                                    rows={2}
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                     placeholder="Short description..."
@@ -493,7 +472,7 @@ export default function Dashboard() {
             )}
 
             {/* --- DELETE CONFIRMATION DIALOG --- */}
-            {deleteConfirmId && (
+            {deleteConfirmId !== null && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
                     <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-gray-100 text-center">
                         <AlertCircle className="w-12 h-12 text-rose-500 mx-auto mb-3" />
