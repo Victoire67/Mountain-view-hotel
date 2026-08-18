@@ -38,7 +38,7 @@ async function fetchItemsWithCache(): Promise<ApiItem[]> {
         return itemsCache!;
     }
 
-    const response = await fetch(`http://${API_URL}/api/items`);
+    const response = await fetch(`${API_URL}/api/items`);
     if (!response.ok) throw new Error("Failed to fetch items");
     const data = await response.json();
 
