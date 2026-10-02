@@ -4,11 +4,10 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "NODE_OPTIONS=--no-network-family-autoselection nodemon server.js"
+    "start": "node init && node server.js",
+    "dev": "node init && NODE_OPTIONS=--no-network-family-autoselection nodemon server.js"
   },
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
