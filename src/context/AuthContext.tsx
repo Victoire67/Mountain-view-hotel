@@ -15,6 +15,16 @@ type AuthContextType = {
     loading: boolean;
 };
 
+// Reads the `exp` claim (seconds) of a JWT; malformed tokens count as expired
+function isTokenExpired(token: string) {
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+        return typeof payload.exp === 'number' && payload.exp * 1000 <= Date.now();
+    } catch {
+        return true;
+    }
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -24,7 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         const storedUserRaw = localStorage.getItem('user');
-        if (storedToken && storedUserRaw) {
+        if (storedToken && storedUserRaw && !isTokenExpired(storedToken)) {
             try {
                 const storedUser: User = JSON.parse(storedUserRaw);
                 setUser(storedUser);
@@ -33,6 +43,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 localStorage.removeItem('user');
                 localStorage.removeItem('token');
             }
+        } else if (storedToken) {
+            // Expired session — clear it so the user is sent to the login page
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
         }
         setLoading(false);
     }, []);

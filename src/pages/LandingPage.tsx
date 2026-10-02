@@ -40,7 +40,8 @@ export default function LandingPage() {
             <img
                 src={hero}
                 alt=""
-                fetchPriority="high"
+                // React 18 only forwards the lowercase attribute
+                {...{ fetchpriority: "high" }}
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover animate-kenburns"
             />

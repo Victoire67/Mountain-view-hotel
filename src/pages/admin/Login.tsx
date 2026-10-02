@@ -1,28 +1,37 @@
 import { useState } from 'react';
+import { m } from 'framer-motion';
 import Logo from '../../assets/logo';
-import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import hero from '../../assets/bgMountainview.jpeg';
+import { Mail, Lock, Eye, EyeOff, LogIn, ArrowLeft, AlertCircle, Loader2 } from 'lucide-react';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 // Empty = same origin (/api on Vercel, or the Vite dev proxy locally)
 const API_URL = import.meta.env.VITE_API_URL ?? "";
+
+const inputCls = "w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-gold/70 focus:bg-white/[0.07]";
+
 export default function LoginPage() {
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ email: '', password: '', rememberMe: false });
+    const location = useLocation();
+    const redirectTo = (location.state as { from?: string } | null)?.from ?? '/dashboard';
+
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
+    const [submitting, setSubmitting] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
+    // Already signed in: skip the form
+    if (user) return <Navigate to={redirectTo} replace />;
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type, checked } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: type === 'checkbox' ? checked : value,
-        }));
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+        setSubmitting(true);
 
         try {
             const response = await fetch(`${API_URL}/api/login`, {
@@ -31,120 +40,117 @@ export default function LoginPage() {
                 body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
+            const data = await response.json().catch(() => ({}));
 
             if (!response.ok) {
                 throw new Error(data.message || 'Login failed');
             }
 
             login(data.user, data.token);
-            navigate('/dashboard');
+            navigate(redirectTo, { replace: true });
         } catch (err) {
-            const message = err instanceof Error ? err.message : 'Login failed';
+            const message = err instanceof TypeError
+                ? 'Cannot reach the server. Please try again.'
+                : err instanceof Error ? err.message : 'Login failed';
             setError(message);
+        } finally {
+            setSubmitting(false);
         }
     };
 
     return (
-        <div className="bg relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat">
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-ink px-4">
+            <img src={hero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 animate-kenburns" />
+            <div className="absolute inset-0 bg-linear-to-b from-ink/70 via-ink/80 to-ink" />
 
-            <div className="relative z-10 w-full max-w-md mx-4 p-8 bg-white/95 rounded-2xl shadow-2xl border border-white/20">
-                <div className="flex flex-col items-center mb-8">
-                    <Logo />
-                    <h1 className="text-2xl font-bold tracking-tight text-gray-800 text-center">
-                        Mountain View
-                    </h1>
-                    <p className="text-sm text-gray-500 text-center font-medium mt-0.5">
-                        Hotel & Apartment
-                    </p>
+            <Link
+                to="/"
+                className="absolute left-5 top-5 z-10 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold"
+            >
+                <ArrowLeft className="h-4 w-4" /> Back to website
+            </Link>
+
+            <m.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 w-full max-w-md rounded-3xl border border-white/10 bg-ink-2/85 p-8 sm:p-10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+            >
+                <div className="flex flex-col items-center text-center">
+                    <div className="[&>svg]:h-14 [&>svg]:w-auto"><Logo /></div>
+                    <p className="mt-4 text-xs uppercase tracking-[0.4em] text-gold">Staff area</p>
+                    <h1 className="mt-2 font-display text-4xl font-semibold">Welcome back</h1>
+                    <p className="mt-2 text-sm text-white/55">Sign in to manage the menu</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Error banner — this also fixes the "declared but never read" warning */}
+                <form onSubmit={handleSubmit} className="mt-8 space-y-4">
                     {error && (
-                        <div className="bg-rose-50 border border-rose-200 text-rose-700 text-sm px-3 py-2 rounded-lg">
-                            {error}
-                        </div>
+                        <m.div
+                            initial={{ opacity: 0, y: -6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            role="alert"
+                            className="flex items-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300"
+                        >
+                            <AlertCircle className="h-4 w-4 shrink-0" /> {error}
+                        </m.div>
                     )}
 
-                    <div>
-                        <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">
-                            Email Address / Username
-                        </label>
-                        <div className="relative flex items-center">
-                            <Mail className="absolute left-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
-                            <input
-                                id="email"
-                                type="text"
-                                name="email"
-                                required
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="name@example.com"
-                                className="w-full pl-11 pr-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-gray-800 text-sm bg-white"
-                            />
-                        </div>
+                    <div className="relative">
+                        <label htmlFor="email" className="sr-only">Email</label>
+                        <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            autoComplete="username"
+                            required
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Email address"
+                            className={inputCls}
+                        />
                     </div>
 
-                    <div>
-                        <label htmlFor="password" className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">
-                            Password
-                        </label>
-                        <div className="relative flex items-center">
-                            <Lock className="absolute left-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
-                            <input
-                                id="password"
-                                type={showPassword ? 'text' : 'password'}
-                                name="password"
-                                required
-                                value={formData.password}
-                                onChange={handleChange}
-                                placeholder="••••••••"
-                                className="w-full pl-11 pr-11 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-gray-800 text-sm bg-white"
-                            />
-                            <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3.5 text-gray-400 hover:text-gray-600 focus:outline-none"
-                            >
-                                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-between text-xs text-gray-600">
-                        <label className="flex items-center cursor-pointer select-none">
-                            <input
-                                type="checkbox"
-                                name="rememberMe"
-                                checked={formData.rememberMe}
-                                onChange={handleChange}
-                                className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
-                            />
-                            <span className="ml-2 font-medium">Remember me</span>
-                        </label>
-
-                        <a href="#forgot" className="font-semibold text-emerald-700 hover:text-emerald-800 hover:underline">
-                            Forgot password?
-                        </a>
+                    <div className="relative">
+                        <label htmlFor="password" className="sr-only">Password</label>
+                        <Lock className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+                        <input
+                            id="password"
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            autoComplete="current-password"
+                            required
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Password"
+                            className={`${inputCls} pr-11`}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(s => !s)}
+                            aria-label={showPassword ? 'Hide password' : 'Show password'}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 transition-colors hover:text-gold"
+                        >
+                            {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full py-3 px-4 rounded-lg bg-[#FFB82B] cursor-pointer hover:bg-emerald-800 text-white font-semibold active:bg-green-500 text-sm transition duration-150 shadow-md hover:shadow-lg active:scale-[0.99] flex items-center justify-center gap-2"
+                        disabled={submitting}
+                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gold py-3.5 text-sm font-bold uppercase tracking-[0.2em] text-ink transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(255,184,43,0.8)] active:scale-[0.99] disabled:cursor-wait disabled:opacity-70"
                     >
-                        <LogIn className="w-4 h-4" />
-                        <span>Sign In</span>
+                        {submitting
+                            ? <Loader2 className="h-4 w-4 animate-spin" />
+                            : <LogIn className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
+                        {submitting ? 'Signing in…' : 'Sign in'}
                     </button>
                 </form>
 
-                <div className="mt-8 pt-4 border-t border-gray-100 text-center">
-                    <p className="text-xs text-gray-400">
-                        &copy; {new Date().getFullYear()} Mountain View Hotel & Apartment. All rights reserved.
-                    </p>
-                </div>
-            </div>
+                <p className="mt-8 border-t border-white/5 pt-5 text-center text-xs text-white/35">
+                    &copy; {new Date().getFullYear()} Mountain View Hotel & Apartments
+                </p>
+            </m.div>
         </div>
     );
 }

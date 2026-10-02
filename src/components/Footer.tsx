@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import Logo from "../assets/logo"
+import { Lock, LayoutDashboard } from "lucide-react"
+import { useAuth } from "../context/AuthContext"
 
 export default function Footer() {
+  const { user } = useAuth()
+
   return (
     <footer className="relative bg-ink-2 text-sm text-white/70" id="footer">
       <div className="h-px w-full bg-linear-to-r from-transparent via-gold/50 to-transparent" />
@@ -43,8 +47,20 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/5 py-6 text-center text-xs text-white/40">
-        © {new Date().getFullYear()} Mountain View Hotel — All rights reserved.
+      <div className="border-t border-white/5">
+        <div className="mx-auto flex max-w-7xl flex-col-reverse items-center justify-between gap-4 px-6 py-6 text-xs text-white/40 sm:flex-row">
+          <span>© {new Date().getFullYear()} Mountain View Hotel — All rights reserved.</span>
+          {/* /dashboard is protected: visitors who aren't signed in are sent to /login first */}
+          <Link
+            to="/dashboard"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 font-semibold uppercase tracking-[0.2em] text-white/60 transition-all duration-300 hover:border-gold/50 hover:text-gold"
+          >
+            {user
+              ? <LayoutDashboard className="h-3.5 w-3.5" />
+              : <Lock className="h-3.5 w-3.5 transition-transform group-hover:-rotate-12" />}
+            {user ? "Dashboard" : "Staff login"}
+          </Link>
+        </div>
       </div>
     </footer>
   )
