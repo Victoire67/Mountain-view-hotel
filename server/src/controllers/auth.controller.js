@@ -13,6 +13,12 @@ const loginUser = async (req, res) => {
         return res.status(400).json({ message: 'Email and password are required.' });
     }
 
+    // Never fall back to a hard-coded secret: anyone could forge admin tokens with it
+    if (!process.env.JWT_SECRET) {
+        console.error('JWT_SECRET is not set — admin login is disabled until it is configured.');
+        return res.status(500).json({ message: 'Server authentication is not configured.' });
+    }
+
     try {
         // Query user from database
         const query = 'SELECT id, email, password_hash FROM users WHERE email = $1';
@@ -32,7 +38,7 @@ const loginUser = async (req, res) => {
         // Generate JWT Token
         const token = jwt.sign(
             { id: user.id, email: user.email, role: user.role },
-            process.env.JWT_SECRET || 'your_jwt_secret',
+            process.env.JWT_SECRET,
             { expiresIn: '1d' }
         );
 
