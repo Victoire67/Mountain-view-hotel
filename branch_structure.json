@@ -1,0 +1,27 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "agent-in-netlify-deploy-d10c",
+    "dev",
+    "fix/vercel-deploy-hardening",
+    "ft/guest-services",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "agent-in-netlify-deploy-d10c": "main",
+    "dev": "main",
+    "fix/vercel-deploy-hardening": "main",
+    "ft/guest-services": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "agent-in-netlify-deploy-d10c",
+    "dev",
+    "fix/vercel-deploy-hardening",
+    "ft/guest-services",
+    "origin"
+  ]
+}
