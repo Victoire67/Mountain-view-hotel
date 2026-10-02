@@ -7,8 +7,6 @@ import jwt from "jsonwebtoken"
 // POST /api/login
 
 const loginUser = async (req, res) => {
-    console.log("SOMEONE WANTS TO SIGN IN AS ADMIN")
-    console.log(req.body)
     const { email, password } = req.body;
 
     if (!email || !password) {
