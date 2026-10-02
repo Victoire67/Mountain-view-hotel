@@ -2,7 +2,7 @@
 import dotenv from "dotenv"
 dotenv.config();
 import  Readline from "readline";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import pool from "../server/src/config/db.js" // Your NeonDB connection pool
 
 // Helper to prompt terminal input with hidden password support
