@@ -1,19 +1,96 @@
 @import "tailwindcss";
-html {
-  scroll-behavior: smooth;
-}
-body {
-  @apply bg-[#FFB82B] text-white
-}
-
-.bg{
-@apply bg-[url('../src/assets/bgMountainview.jpeg')] bg-black/70 bg-blend-overlay bg-cover bg-center;
-}
-
-.text-primary{
-  @apply text-[#FFB82B]
-}
 
 @theme {
-  --font-montserrat: "Montserrat", sans-serif;
+  --font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+
+  --color-gold: #ffb82b;
+  --color-gold-soft: #ffdca7;
+  --color-gold-deep: #c68400;
+  --color-forest: #004325;
+  --color-ink: #0b0a08;
+  --color-ink-2: #14120e;
+  --color-ink-3: #1d1a15;
+
+  --animate-kenburns: kenburns 22s ease-out both;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-scroll-cue: scroll-cue 1.8s ease-in-out infinite;
+
+  @keyframes kenburns {
+    from { transform: scale(1.15); }
+    to { transform: scale(1); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes scroll-cue {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-ink text-white font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  @apply bg-gold text-ink;
+}
+
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-gold;
+}
+
+/* Thin, on-brand scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3a342a transparent;
+}
+
+.text-primary {
+  @apply text-gold;
+}
+
+/* Gold gradient text for headlines */
+.text-gold-gradient {
+  background: linear-gradient(100deg, #ffdca7 0%, #ffb82b 45%, #c68400 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Skeleton placeholder */
+.skeleton {
+  background: linear-gradient(90deg, #1d1a15 25%, #2a261f 50%, #1d1a15 75%);
+  background-size: 200% 100%;
+  @apply animate-shimmer rounded;
+}
+
+/* Hide horizontal scrollbar on the category chip row */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

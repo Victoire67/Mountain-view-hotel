@@ -1,22 +1,18 @@
 import Item from "../components/Item";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
-import ScrollToTop from "../components/ScrollToTop";
-
-const API_URL = import.meta.env.VITE_API_URL;
-type MenuType = "food" | "drinks";
+import { m, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useMemo, useRef, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import fallbackImg from "../assets/bgMountainview.jpeg";
+import {
+    categoryImageUrl,
+    fetchItemsWithCache,
+    getCachedItems,
+    type ApiItem,
+    type MenuType,
+} from "../lib/menu";
 
 type MainContentPageProps = {
     type: MenuType;
-};
-
-type ApiItem = {
-    name: string;
-    price: string | number;
-    name_fr?: string | null;
-    type: string;
-    description?: string | null;
-    isFood: boolean;
 };
 
 type CategoryGroup = {
@@ -24,153 +20,233 @@ type CategoryGroup = {
     items: ApiItem[];
 };
 
-// --- Module-level cache ---
-// Lives outside the component, so it persists across mounts/unmounts
-// (e.g. navigating between /food and /drinks) without a full page reload.
-let itemsCache: ApiItem[] | null = null;
-let itemsCacheTimestamp = 0;
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes — adjust as needed
-
-async function fetchItemsWithCache(): Promise<ApiItem[]> {
-    const isCacheFresh = itemsCache !== null && Date.now() - itemsCacheTimestamp < CACHE_TTL_MS;
-
-    if (isCacheFresh) {
-        return itemsCache!;
-    }
-
-    const response = await fetch(`${API_URL}/api/items`);
-    if (!response.ok) throw new Error("Failed to fetch items");
-    const data = await response.json();
-
-    itemsCache = data;
-    itemsCacheTimestamp = Date.now();
-    return data;
-}
-
 export default function MainContentPage({ type }: MainContentPageProps) {
-    const [items, setItems] = useState<ApiItem[]>(itemsCache ?? []);
-    const [loading, setLoading] = useState(itemsCache === null);
+    const [items, setItems] = useState<ApiItem[]>(() => getCachedItems() ?? []);
+    const [loading, setLoading] = useState(() => getCachedItems() === null);
+    const [error, setError] = useState(false);
     const [dataOnView, setDataOnView] = useState(0);
+    const bannerRef = useRef<HTMLDivElement>(null);
+    const chipsRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    const load = useCallback(() => {
         let cancelled = false;
+        setError(false);
 
-        async function getData() {
-            try {
-                const data = await fetchItemsWithCache();
-                if (!cancelled) setItems(data);
-            } catch (err) {
+        fetchItemsWithCache()
+            .then(data => { if (!cancelled) setItems(data); })
+            .catch(err => {
                 console.error("Error fetching items:", err);
-            } finally {
-                if (!cancelled) setLoading(false);
-            }
-        }
+                if (!cancelled) setError(true);
+            })
+            .finally(() => { if (!cancelled) setLoading(false); });
 
-        getData();
-
-        return () => {
-            cancelled = true;
-        };
+        return () => { cancelled = true; };
     }, []);
 
-    // ... rest of the component stays exactly the same ...
+    useEffect(load, [load]);
 
     const categories: CategoryGroup[] = useMemo(() => {
         const isFoodTarget = type === "food";
-        const filtered = items.filter(item => item.isFood === isFoodTarget);
         const groups: Record<string, CategoryGroup> = {};
 
-        filtered.forEach(item => {
+        items.forEach(item => {
+            if (item.isFood !== isFoodTarget) return;
             const catName = item.type || "General";
-            if (!groups[catName]) {
-                groups[catName] = { categoryName: catName, items: [] };
-            }
-            groups[catName].items.push(item);
+            (groups[catName] ??= { categoryName: catName, items: [] }).items.push(item);
         });
 
         return Object.values(groups);
     }, [items, type]);
 
+    // Preload neighbouring banners so switching category feels instant
     useEffect(() => {
-        setDataOnView(0);
-    }, [type]);
+        if (categories.length < 2) return;
+        const n = categories.length;
+        [dataOnView + 1, dataOnView - 1 + n].forEach(i => {
+            const img = new Image();
+            img.src = categoryImageUrl(type, categories[i % n].categoryName);
+        });
+    }, [categories, dataOnView, type]);
 
-    function nextDataOnView() {
+    // Keep the active chip visible in the horizontal scroller
+    useEffect(() => {
+        // Scroll only the chip row (scrollIntoView could also scroll the page vertically)
+        const row = chipsRef.current;
+        const chip = row?.querySelector<HTMLElement>(`[data-index="${dataOnView}"]`);
+        if (row && chip) {
+            row.scrollTo({ left: chip.offsetLeft - row.clientWidth / 2 + chip.offsetWidth / 2, behavior: "smooth" });
+        }
+    }, [dataOnView]);
+
+    function goTo(index: number) {
         if (categories.length === 0) return;
-        setDataOnView(prev => (prev + 1 >= categories.length ? 0 : prev + 1));
-        window.scrollTo(0, 0);
+        const n = categories.length;
+        setDataOnView(((index % n) + n) % n);
+
+        // Bring the list back into view without jumping all the way to the top
+        const bannerBottom = (bannerRef.current?.offsetHeight ?? 0) - 64;
+        if (window.scrollY > bannerBottom) window.scrollTo({ top: bannerBottom, behavior: "smooth" });
     }
 
-    function prevDataOnView() {
-        if (categories.length === 0) return;
-        setDataOnView(prev => (prev === 0 ? categories.length - 1 : prev - 1));
-        window.scrollTo(0, 0);
-    }
+    if (loading) return <MenuSkeleton />;
 
-    if (loading) {
-        return <div className="text-white text-center py-20 bg-black min-h-screen">Loading menu...</div>;
+    if (error && categories.length === 0) {
+        return (
+            <div className="min-h-screen grid place-items-center px-6 text-center">
+                <div>
+                    <p className="font-display text-3xl">We couldn't load the menu.</p>
+                    <p className="mt-2 text-white/60">Please check your connection and try again.</p>
+                    <button
+                        onClick={() => { setLoading(true); load(); }}
+                        className="mt-6 rounded-full bg-gold px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-ink transition-transform hover:-translate-y-0.5"
+                    >
+                        Retry
+                    </button>
+                </div>
+            </div>
+        );
     }
 
     if (categories.length === 0) {
-        return <div className="text-white text-center py-20 bg-black min-h-screen">No items available.</div>;
+        return <div className="min-h-screen grid place-items-center text-white/70">No items available.</div>;
     }
 
-    const currentCategory = categories[dataOnView] || categories[0];
-
-    const imageName = currentCategory.categoryName.replace(/\s+/g, "");
-
+    const current = categories[dataOnView] ?? categories[0];
+    const prev = categories[(dataOnView - 1 + categories.length) % categories.length];
+    const next = categories[(dataOnView + 1) % categories.length];
 
     return (
         <div>
-            <div
-                className="bg-black/70 sm:pt-[20%] pt-[50%] animation-appear text-center h-screen/2 pb-4 bg-cover bg-center bg-blend-multiply bg-linear-to-t from-black/90 to-transparent"
-                style={{
-                    backgroundImage: `url(/${type}s/${imageName}.jpg)`
-                }}
-            >
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={dataOnView}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -40 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                    >
-                        <h1 className="text-5xl font-bold text-white uppercase">{currentCategory.categoryName}</h1>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-
-            <div className="grid sm:grid-cols-2 bg-black px-2 w-full">
-                {currentCategory.items.map(item => (
-                    <Item
-                        key={item.name}
-                        name={item.name}
-                        price={item.price as number}
-                        frenchTr={item.name_fr ?? item.name}
-                        description={item.description ?? ""}
+            {/* ---------- Banner ---------- */}
+            <div ref={bannerRef} className="relative h-[52vh] min-h-85 overflow-hidden">
+                <AnimatePresence initial={false}>
+                    <m.img
+                        key={current.categoryName}
+                        src={categoryImageUrl(type, current.categoryName)}
+                        onError={e => { e.currentTarget.src = fallbackImg; }}
+                        alt=""
+                        decoding="async"
+                        initial={{ opacity: 0, scale: 1.08 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0 h-full w-full object-cover"
                     />
-                ))}
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-ink" />
+
+                <div className="relative z-10 flex h-full flex-col items-center justify-end pb-14 px-4 text-center">
+                    <p className="text-xs uppercase tracking-[0.5em] text-gold">
+                        {type === "food" ? "Our kitchen" : "Our bar"}
+                    </p>
+                    <AnimatePresence mode="wait">
+                        <m.h1
+                            key={current.categoryName}
+                            initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="mt-3 font-display text-5xl sm:text-7xl font-semibold capitalize"
+                        >
+                            {current.categoryName}
+                        </m.h1>
+                    </AnimatePresence>
+                    <p className="mt-3 text-sm text-white/60">
+                        {current.items.length} {current.items.length === 1 ? "item" : "items"}
+                    </p>
+                </div>
             </div>
 
+            {/* ---------- Category chips ---------- */}
+            <div className="sticky top-16 z-30 border-y border-white/5 bg-ink/85 backdrop-blur-xl">
+                <div ref={chipsRef} className="no-scrollbar relative mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3">
+                    {categories.map((c, i) => (
+                        <button
+                            key={c.categoryName}
+                            data-index={i}
+                            onClick={() => goTo(i)}
+                            className={`shrink-0 rounded-full px-4 py-1.5 text-sm capitalize transition-all duration-300 ${i === dataOnView
+                                ? "bg-gold text-ink font-semibold shadow-[0_4px_20px_-4px_rgba(255,184,43,0.6)]"
+                                : "border border-white/10 text-white/70 hover:border-gold/50 hover:text-gold"
+                                }`}
+                        >
+                            {c.categoryName}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* ---------- Items ---------- */}
+            <AnimatePresence mode="wait">
+                <m.div
+                    key={current.categoryName}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="mx-auto grid max-w-7xl gap-4 px-4 py-10 md:grid-cols-2"
+                >
+                    {current.items.map((item, i) => (
+                        <Item
+                            key={item.name}
+                            index={i}
+                            name={item.name}
+                            price={item.price}
+                            frenchTr={item.name_fr ?? ""}
+                            description={item.description ?? ""}
+                        />
+                    ))}
+                </m.div>
+            </AnimatePresence>
+
+            {/* ---------- Prev / next ---------- */}
             {categories.length > 1 && (
-                <div className="bg-black py-8 flex items-center place-content-center gap-8">
+                <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 pb-16">
                     <button
-                        className="px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold"
-                        onClick={prevDataOnView}
+                        onClick={() => goTo(dataOnView - 1)}
+                        className="group flex items-center gap-3 rounded-2xl border border-white/10 p-5 text-left transition-colors hover:border-gold/50 hover:bg-ink-2"
                     >
-                        PREV
+                        <ChevronLeft className="h-6 w-6 shrink-0 text-gold transition-transform group-hover:-translate-x-1" />
+                        <span className="min-w-0">
+                            <span className="block text-xs uppercase tracking-[0.25em] text-white/50">Previous</span>
+                            <span className="block truncate font-display text-xl sm:text-2xl capitalize">{prev.categoryName}</span>
+                        </span>
                     </button>
                     <button
-                        className="px-8 py-2 bg-[#FFB82B] text-black border-amber-200 border hover:text-[#FFB82B] hover:bg-transparent cursor-pointer transform transition-colors font-bold"
-                        onClick={nextDataOnView}
+                        onClick={() => goTo(dataOnView + 1)}
+                        className="group flex items-center justify-end gap-3 rounded-2xl border border-white/10 p-5 text-right transition-colors hover:border-gold/50 hover:bg-ink-2"
                     >
-                        NEXT
+                        <span className="min-w-0">
+                            <span className="block text-xs uppercase tracking-[0.25em] text-white/50">Next</span>
+                            <span className="block truncate font-display text-xl sm:text-2xl capitalize">{next.categoryName}</span>
+                        </span>
+                        <ChevronRight className="h-6 w-6 shrink-0 text-gold transition-transform group-hover:translate-x-1" />
                     </button>
                 </div>
             )}
+        </div>
+    );
+}
 
-            <ScrollToTop />
+function MenuSkeleton() {
+    return (
+        <div aria-busy="true" aria-label="Loading menu">
+            <div className="h-[52vh] min-h-85 flex flex-col items-center justify-end pb-14 gap-4 bg-linear-to-b from-ink-2 to-ink">
+                <div className="skeleton h-3 w-28" />
+                <div className="skeleton h-14 w-72" />
+            </div>
+            <div className="mx-auto flex max-w-7xl gap-2 px-4 py-3">
+                {Array.from({ length: 5 }, (_, i) => <div key={i} className="skeleton h-8 w-24 rounded-full" />)}
+            </div>
+            <div className="mx-auto grid max-w-7xl gap-4 px-4 py-10 md:grid-cols-2">
+                {Array.from({ length: 6 }, (_, i) => (
+                    <div key={i} className="rounded-xl border border-white/5 p-5 space-y-3">
+                        <div className="flex justify-between"><div className="skeleton h-6 w-1/2" /><div className="skeleton h-6 w-20" /></div>
+                        <div className="skeleton h-3 w-full" />
+                        <div className="skeleton h-3 w-2/3" />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

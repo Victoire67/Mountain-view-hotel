@@ -12,7 +12,7 @@ export default function Home(){
     >
       <section className="relative h-[56vw] sm:h-[40vw] md:h-[28vw] bg-black overflow-hidden">
         <img src={hero} alt="hotel" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/80" />
 
         <div className="relative max-w-4xl mx-auto px-6 h-full flex flex-col justify-center items-start gap-6 pt-12">
           <div className="bg-black/50 px-3 py-1 rounded text-xs text-yellow-300">Restaurant & Bar</div>

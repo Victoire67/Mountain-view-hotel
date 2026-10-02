@@ -3,7 +3,8 @@ import Logo from '../../assets/logo';
 import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-const API_URL = import.meta.env.VITE_API_URL
+// Empty = same origin (/api on Vercel, or the Vite dev proxy locally)
+const API_URL = import.meta.env.VITE_API_URL ?? "";
 export default function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();

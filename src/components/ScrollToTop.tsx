@@ -4,11 +4,9 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    // React bails out of re-renders when the boolean is unchanged
+    const handleScroll = () => setIsVisible(window.scrollY > 400);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -21,12 +19,11 @@ export default function ScrollToTopButton() {
       onClick={scrollToTop}
       aria-label="Scroll to top"
       className={`
-        fixed bottom-6 right-4 z-50
-        flex items-center justify-center
+        fixed bottom-6 right-5 z-50
+        grid place-items-center
         w-12 h-12 rounded-full
-        bg-yellow-700 text-white shadow-lg
-        transition-all duration-300 ease-in-out
-        md:hidden
+        bg-gold text-ink shadow-[0_8px_30px_rgba(255,184,43,0.35)]
+        transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(255,184,43,0.55)]
         ${isVisible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"}
       `}
     >

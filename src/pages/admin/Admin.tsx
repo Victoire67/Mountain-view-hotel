@@ -3,6 +3,7 @@ import {
     Search, Plus, Trash2, Edit2, RefreshCw,
     Utensils, Coffee, X, AlertCircle
 } from 'lucide-react';
+import { invalidateItemsCache } from '../../lib/menu';
 
 type Item = {
     id: number;
@@ -14,7 +15,8 @@ type Item = {
     isFood?: boolean;
 };
 
-const API_URL = import.meta.env.VITE_API_URL;
+// Empty = same origin (/api on Vercel, or the Vite dev proxy locally)
+const API_URL = import.meta.env.VITE_API_URL ?? "";
 
 export default function Dashboard() {
     const [items, setItems] = useState<Item[]>([]);
@@ -43,7 +45,8 @@ export default function Dashboard() {
     const fetchItems = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}/api/items`);
+            // Always revalidate with the server so the dashboard never shows a browser-cached list
+            const response = await fetch(`${API_URL}/api/items`, { cache: 'no-cache' });
             if (!response.ok) throw new Error('Failed to fetch items from server');
             const data = await response.json();
             setItems(data);
@@ -146,6 +149,7 @@ export default function Dashboard() {
                 if (res.ok) {
                     const updated = await res.json();
                     setItems(prev => prev.map(i => i.id === currentItem.id ? { ...i, ...updated } : i));
+                    invalidateItemsCache();
                 } else {
                     console.error('Update failed:', await res.text());
                 }
@@ -161,6 +165,7 @@ export default function Dashboard() {
                 if (res.ok) {
                     const newItem = await res.json();
                     setItems(prev => [...prev, newItem]);
+                    invalidateItemsCache();
                 } else {
                     console.error('Create failed:', await res.text());
                 }
@@ -182,6 +187,7 @@ export default function Dashboard() {
             });
             if (res.ok) {
                 setItems(prev => prev.filter(item => item.id !== id));
+                invalidateItemsCache();
             } else {
                 console.error('Delete failed:', await res.text());
             }
